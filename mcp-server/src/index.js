@@ -7,9 +7,18 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { Bridge } from "./bridge.js";
+import { registerEditingTools, EDITING_INSTRUCTIONS } from "./editing.js";
 
 const bridge = new Bridge();
-const server = new McpServer({ name: "after-effects", version: "1.0.0" });
+const server = new McpServer(
+  { name: "after-effects", version: "1.1.0" },
+  {
+    instructions:
+      "Controls Adobe After Effects through the Claude Bridge panel. Call ae_status first. " +
+      "Prefer the dedicated ae_* tools; use ae_run_script for anything they do not cover.\n" +
+      EDITING_INSTRUCTIONS,
+  }
+);
 
 const compRef = z
   .union([z.string(), z.number()])
@@ -448,5 +457,7 @@ server.registerTool(
     }
   }
 );
+
+registerEditingTools(server, bridge);
 
 await server.connect(new StdioServerTransport());

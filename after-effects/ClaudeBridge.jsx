@@ -16,7 +16,7 @@
  */
 
 (function (thisObj) {
-    var VERSION = "1.0.0";
+    var VERSION = "1.1.0";
     var POLL_MS = 200;
     var HEARTBEAT_MS = 2000;
 
@@ -858,8 +858,439 @@
         return result === undefined ? null : result;
     };
 
+    // ------------------------------------------------------------------
+    // Editing recipes (presets learned from analysed videos)
+    // ------------------------------------------------------------------
+    var FX_TAG = "claude-fx";
+
+    function isFxLayer(l) { return l.comment === FX_TAG; }
+
+    function isFootageLayer(l) {
+        return l instanceof AVLayer && !isFxLayer(l) && !l.adjustmentLayer && !l.nullLayer && l.hasVideo && !(l instanceof TextLayer) && !(l instanceof ShapeLayer);
+    }
+
+    function clampT(c, t) { return Math.max(0, Math.min(c.duration, t)); }
+
+    function fxLayer(c, name, t0, t1, opts) {
+        opts = opts || {};
+        var l = c.layers.addSolid(toRgb(opts.color) || [1, 1, 1], name, c.width, c.height, c.pixelAspect, c.duration);
+        l.startTime = 0;
+        if (opts.adjustment !== false) l.adjustmentLayer = true;
+        l.comment = FX_TAG;
+        l.label = 11;
+        var a = clampT(c, Math.min(t0, t1)), b = clampT(c, Math.max(t0, t1));
+        if (b - a < c.frameDuration) b = Math.min(c.duration, a + c.frameDuration);
+        l.outPoint = b;
+        l.inPoint = a;
+        return l;
+    }
+
+    // Adds an effect and returns its index (references go stale after edits, so callers re-fetch).
+    function addFx(layer, matchName, displayName) {
+        var parade = layer.property("ADBE Effect Parade");
+        var e = null;
+        if (parade.canAddProperty(matchName)) e = parade.addProperty(matchName);
+        else if (displayName) {
+            for (var i = 0; i < app.effects.length; i++) {
+                if (app.effects[i].displayName === displayName) { e = parade.addProperty(app.effects[i].matchName); break; }
+            }
+        }
+        if (!e) fail("Effect '" + (displayName || matchName) + "' is not available");
+        return e.propertyIndex;
+    }
+
+    function fxAt(layer, idx) { return layer.property("ADBE Effect Parade").property(idx); }
+
+    function fxProp(layer, idx, candidates) {
+        var e = fxAt(layer, idx);
+        for (var i = 0; i < candidates.length; i++) {
+            var p = null;
+            try { p = e.property(candidates[i]); } catch (err) { p = null; }
+            if (p) return p;
+        }
+        fail("Parameter " + candidates.join(" / ") + " not found on " + e.name);
+    }
+
+    var EASES = {
+        easyEase: { ease: "easyEase" },
+        easeIn: { ease: "easeIn" },
+        easeOut: { ease: "easeOut" },
+        strong: { easeIn: { speed: 0, influence: 85 }, easeOut: { speed: 0, influence: 85 } }
+    };
+
+    // keys: [[time, value, ease?, "hold"?], ...]; ease is a name from EASES or "linear".
+    function keyAll(getProp, keys, defEase) {
+        var i, p;
+        for (i = 0; i < keys.length; i++) getProp().setValueAtTime(keys[i][0], keys[i][1]);
+        for (i = 0; i < keys.length; i++) {
+            p = getProp();
+            var k = p.nearestKeyIndex(keys[i][0]);
+            var ease = keys[i][2] || defEase || "easyEase";
+            if (ease === "linear") p.setInterpolationTypeAtKey(k, KeyframeInterpolationType.LINEAR, KeyframeInterpolationType.LINEAR);
+            else if (EASES[ease]) setKeyEase(p, k, EASES[ease]);
+            if (keys[i][3] === "hold") p.setInterpolationTypeAtKey(k, p.keyInInterpolationType(k), KeyframeInterpolationType.HOLD);
+        }
+    }
+
+    function addTransformFx(l, st) {
+        if (st.mirrorEdges !== false) {
+            var tile = addFx(l, "ADBE Tile", "Motion Tile");
+            fxProp(l, tile, ["ADBE Tile-0004", "Output Width"]).setValue(300);
+            fxProp(l, tile, ["ADBE Tile-0005", "Output Height"]).setValue(300);
+            fxProp(l, tile, ["ADBE Tile-0006", "Mirror Edges"]).setValue(1);
+        }
+        var tf = addFx(l, "ADBE Geometry2", "Transform");
+        if (st.motionBlur !== false) {
+            fxProp(l, tf, ["ADBE Geometry2-0009", "Use Composition's Shutter Angle"]).setValue(0);
+            fxProp(l, tf, ["ADBE Geometry2-0010", "Shutter Angle"]).setValue(st.shutterAngle || 240);
+        }
+        return tf;
+    }
+
+    function TF(l, tf, what) {
+        var map = {
+            scale: ["ADBE Geometry2-0003", "Scale Height", "Scale"],
+            position: ["ADBE Geometry2-0002", "Position"],
+            rotation: ["ADBE Geometry2-0007", "Rotation"],
+            opacity: ["ADBE Geometry2-0008", "Opacity"]
+        };
+        return function () { return fxProp(l, tf, map[what]); };
+    }
+
+    function layerAt(c, t, target) {
+        var best = null;
+        for (var i = 1; i <= c.numLayers; i++) {
+            var l = c.layer(i);
+            if (!isFootageLayer(l) || !(l.inPoint <= t && l.outPoint > t)) continue;
+            if (target && l.source && target.source && l.source.id === target.source.id) return l;
+            if (!best) best = l;
+        }
+        return best;
+    }
+
+    // The outgoing/incoming pair at an edit point. Splits the footage when there is no edit yet.
+    function pairAt(c, t, target) {
+        var hf = c.frameDuration / 2, out = null, inn = null;
+        for (var i = 1; i <= c.numLayers; i++) {
+            var l = c.layer(i);
+            if (!isFootageLayer(l)) continue;
+            if (!out && Math.abs(l.outPoint - t) <= hf && l.inPoint < t) out = l;
+            if (!inn && Math.abs(l.inPoint - t) <= hf && l.outPoint > t) inn = l;
+        }
+        if (out && inn) return { out: out, inn: inn };
+        var span = layerAt(c, t, target);
+        if (!span) fail("No footage layer at " + t + "s to cut");
+        var nl = span.splitLayer(t);
+        return Math.abs(nl.inPoint - t) <= hf ? { out: span, inn: nl } : { out: nl, inn: span };
+    }
+
+    // Keep the outgoing layer on screen past its end by freezing its last frame.
+    function holdOut(l, until) {
+        if (until <= l.outPoint) return;
+        var fd = l.containingComp.frameDuration;
+        var end = l.outPoint;
+        if (!l.canSetTimeRemapEnabled) { l.outPoint = until; return; }
+        var v = end - fd - l.startTime;
+        if (!l.timeRemapEnabled) l.timeRemapEnabled = true;
+        else v = l.property("ADBE Time Remapping").valueAtTime(end - fd, false);
+        var tr = l.property("ADBE Time Remapping");
+        tr.setValueAtTime(end - fd, v);
+        for (var k = tr.numKeys; k >= 1; k--) if (tr.keyTime(k) > end - fd + 1e-6) tr.removeKey(k);
+        l.outPoint = until;
+    }
+
+    function slideVec(dir, c, dist) {
+        var w = c.width * (dist || 1), h = c.height * (dist || 1);
+        if (dir === "right") return [w, 0];
+        if (dir === "up") return [0, -h];
+        if (dir === "down") return [0, h];
+        return [-w, 0];
+    }
+
+    var RECIPES = {};
+
+    RECIPES.cut = function (x) { if (!x.pair) x.pair = pairAt(x.comp, x.t, x.target); };
+
+    RECIPES.jump_cut = function (x, st) {
+        var p = x.pair || pairAt(x.comp, x.t, x.target);
+        var rm = st.remove !== undefined ? st.remove : 0.3;
+        var end = p.inn.outPoint;
+        var hf = x.comp.frameDuration / 2;
+        // Ripple: everything after this segment moves left so no gap is left behind.
+        for (var i = 1; i <= x.comp.numLayers; i++) {
+            var l = x.comp.layer(i);
+            if (l !== p.inn && l.inPoint >= end - hf) l.startTime -= rm;
+        }
+        p.inn.startTime -= rm;
+        p.inn.inPoint = x.t;
+        p.inn.outPoint = Math.max(x.t + x.comp.frameDuration, end - rm);
+    };
+
+    RECIPES.crossfade = function (x, st) {
+        var p = x.pair || pairAt(x.comp, x.t, x.target);
+        var d = x.s1 - x.s0; // the incoming shot starts on the cut while the outgoing one freezes and fades
+        if (p.out.index > p.inn.index) p.out.moveBefore(p.inn);
+        holdOut(p.out, x.t + d);
+        var out = p.out;
+        keyAll(function () { return out.property("ADBE Transform Group").property("ADBE Opacity"); }, [[x.t, 100], [x.t + d, 0]], st.ease || "linear");
+    };
+
+    RECIPES.push = function (x, st) {
+        var p = x.pair || pairAt(x.comp, x.t, x.target);
+        var d = x.s1 - x.s0;
+        var v = slideVec(st.direction || "left", x.comp, st.distance || 1);
+        holdOut(p.out, x.t + d);
+        var out = p.out, inn = p.inn;
+        var po = out.property("ADBE Transform Group").property("ADBE Position").value;
+        var pi = inn.property("ADBE Transform Group").property("ADBE Position").value;
+        keyAll(function () { return out.property("ADBE Transform Group").property("ADBE Position"); },
+            [[x.t, po], [x.t + d, [po[0] + v[0], po[1] + v[1]].concat(po.length > 2 ? [po[2]] : [])]], st.ease || "strong");
+        keyAll(function () { return inn.property("ADBE Transform Group").property("ADBE Position"); },
+            [[x.t, [pi[0] - v[0], pi[1] - v[1]].concat(pi.length > 2 ? [pi[2]] : [])], [x.t + d, pi]], st.ease || "strong");
+        if (st.motionBlur !== false) { out.motionBlur = true; inn.motionBlur = true; x.comp.motionBlur = true; }
+    };
+
+    RECIPES.flash = function (x, st) {
+        var l = fxLayer(x.comp, x.label + " flash", x.s0, x.s1, { adjustment: false, color: st.color || "#ffffff" });
+        if (st.blendingMode) l.blendingMode = BlendingMode[String(st.blendingMode).toUpperCase()];
+        keyAll(function () { return l.property("ADBE Transform Group").property("ADBE Opacity"); },
+            [[x.s0, 0, "linear"], [x.pk, st.peak !== undefined ? st.peak : 100, "linear"], [x.s1, 0, "easeIn"]]);
+        return l;
+    };
+
+    RECIPES.dip = function (x, st) {
+        var l = fxLayer(x.comp, x.label + " dip", x.s0, x.s1, { adjustment: false, color: st.color || "#000000" });
+        var h0 = x.t + (st.holdStart || 0) * x.k, h1 = x.t + (st.holdEnd || 0) * x.k;
+        var keys = [[x.s0, 0, st.ease || "linear"], [h0, 100, st.ease || "linear"]];
+        if (h1 > h0 + x.comp.frameDuration / 2) keys.push([h1, 100, st.ease || "linear"]);
+        keys.push([x.s1, 0, st.ease || "linear"]);
+        keyAll(function () { return l.property("ADBE Transform Group").property("ADBE Opacity"); }, keys);
+        return l;
+    };
+
+    RECIPES.zoom = function (x, st) {
+        var l = fxLayer(x.comp, x.label + " zoom", x.s0, x.s1);
+        var tf = addTransformFx(l, st);
+        var s = isArray(st.scale) ? st.scale : [100, st.scale || 150, 100];
+        keyAll(TF(l, tf, "scale"), [[x.s0, s[0], st.ease || "strong"], [x.pk, s[1], "linear"], [x.s1, s.length > 2 ? s[2] : 100, st.ease || "strong"]]);
+        return l;
+    };
+
+    RECIPES.punch = function (x, st) {
+        var l = fxLayer(x.comp, x.label + " punch", x.s0, x.s1);
+        var tf = addTransformFx(l, { mirrorEdges: false, motionBlur: false });
+        TF(l, tf, "scale")().setValue(isArray(st.scale) ? st.scale[0] : (st.scale || 115));
+        return l;
+    };
+
+    RECIPES.whip = function (x, st) {
+        var l = fxLayer(x.comp, x.label + " whip", x.s0, x.s1);
+        var tf = addTransformFx(l, { mirrorEdges: st.mirrorEdges, motionBlur: st.motionBlur, shutterAngle: st.shutterAngle || 360 });
+        var c = x.comp, fd = c.frameDuration, v = slideVec(st.direction || "left", c, st.distance || 1);
+        var cx = c.width / 2, cy = c.height / 2;
+        keyAll(TF(l, tf, "position"), [
+            [x.s0, [cx, cy], st.ease || "strong"],
+            [x.pk - fd, [cx + v[0], cy + v[1]], "linear", "hold"],
+            [x.pk, [cx - v[0], cy - v[1]], "linear"],
+            [x.s1, [cx, cy], st.ease || "strong"]
+        ]);
+        return l;
+    };
+
+    RECIPES.spin = function (x, st) {
+        var l = fxLayer(x.comp, x.label + " spin", x.s0, x.s1);
+        var tf = addTransformFx(l, st);
+        var d = st.degrees || 360, fd = x.comp.frameDuration;
+        keyAll(TF(l, tf, "rotation"), [[x.s0, 0, st.ease || "strong"], [x.pk - fd, d / 2, "linear", "hold"], [x.pk, -d / 2, "linear"], [x.s1, 0, st.ease || "strong"]]);
+        return l;
+    };
+
+    RECIPES.blur = function (x, st) {
+        var l = fxLayer(x.comp, x.label + " blur", x.s0, x.s1);
+        var g = addFx(l, "ADBE Gaussian Blur 2", "Gaussian Blur");
+        try { fxProp(l, g, ["ADBE Gaussian Blur 2-0003", "Repeat Edge Pixels"]).setValue(1); } catch (e) {}
+        keyAll(function () { return fxProp(l, g, ["ADBE Gaussian Blur 2-0001", "Blurriness"]); },
+            [[x.s0, 0, st.ease || "easyEase"], [x.pk, st.amount || 40, "linear"], [x.s1, 0, st.ease || "easyEase"]]);
+        return l;
+    };
+
+    RECIPES.shake = function (x, st) {
+        var l = fxLayer(x.comp, x.label + " shake", x.s0, x.s1);
+        var tf = addTransformFx(l, { mirrorEdges: st.mirrorEdges, motionBlur: st.motionBlur, shutterAngle: st.shutterAngle });
+        var f = st.frequency || 12, a = st.amplitude || 25;
+        var env = "var k = ease(time, thisLayer.inPoint, thisLayer.outPoint, 1, 0);\n";
+        TF(l, tf, "position")().expression = env + "value + (wiggle(" + f + ", " + a + ") - value) * k;";
+        if (st.rotation) TF(l, tf, "rotation")().expression = env + "value + (wiggle(" + f + ", " + st.rotation + ") - value) * k;";
+        return l;
+    };
+
+    RECIPES.speed_ramp = function (x, st) {
+        var L = layerAt(x.comp, x.s0 + x.comp.frameDuration / 2, x.target);
+        if (!L) fail("No footage layer at " + x.s0 + "s for the speed ramp");
+        if (!L.canSetTimeRemapEnabled) fail("Layer '" + L.name + "' cannot be time-remapped");
+        var speed = st.speed || 2, d = x.s1 - x.s0;
+        var oldOut = L.outPoint;
+        if (!L.timeRemapEnabled) L.timeRemapEnabled = true;
+        var tr = L.property("ADBE Time Remapping");
+        var v0 = tr.valueAtTime(x.s0, false);
+        var vEnd = tr.keyValue(tr.numKeys);
+        var srcOut = tr.valueAtTime(oldOut, false);
+        var v1 = Math.min(vEnd, v0 + d * speed);
+        for (var k = tr.numKeys; k >= 1; k--) if (tr.keyTime(k) > x.s0 + 1e-6) tr.removeKey(k);
+        var tEnd = x.s1 + (vEnd - v1);
+        keyAll(function () { return L.property("ADBE Time Remapping"); }, [[x.s0, v0, st.ease || "linear"], [x.s1, v1, st.ease || "linear"], [tEnd, vEnd, "linear"]]);
+        L.outPoint = Math.max(x.s1, x.s1 + (srcOut - v1));
+    };
+
+    RECIPES.grade = function (x, st) {
+        var whole = st.start === undefined && st.duration === undefined;
+        var l = fxLayer(x.comp, x.label + " grade", whole ? 0 : x.s0, whole ? x.comp.duration : x.s1);
+        if (st.brightness || st.contrast) {
+            var bc = addFx(l, "ADBE Brightness & Contrast 2", "Brightness & Contrast");
+            try { fxProp(l, bc, ["ADBE Brightness & Contrast 2-0003", "Use Legacy"]).setValue(0); } catch (e) {}
+            fxProp(l, bc, ["ADBE Brightness & Contrast 2-0001", "Brightness"]).setValue(st.brightness || 0);
+            fxProp(l, bc, ["ADBE Brightness & Contrast 2-0002", "Contrast"]).setValue(st.contrast || 0);
+        }
+        if (st.saturation) {
+            var vb = addFx(l, "ADBE Vibrance", "Vibrance");
+            fxProp(l, vb, ["ADBE Vibrance-0002", "Saturation"]).setValue(st.saturation);
+        }
+        if (st.tint && st.tint.color) {
+            var tn = addFx(l, "ADBE Tint", "Tint");
+            fxProp(l, tn, ["ADBE Tint-0001", "Map Black To"]).setValue([0, 0, 0, 1]);
+            fxProp(l, tn, ["ADBE Tint-0002", "Map White To"]).setValue(toRgba(st.tint.color));
+            fxProp(l, tn, ["ADBE Tint-0003", "Amount to Tint"]).setValue(st.tint.amount || 20);
+        }
+        return l;
+    };
+
+    RECIPES.effect = function (x, st) {
+        var l = st.adjustment === false ? layerAt(x.comp, x.t, x.target) : fxLayer(x.comp, x.label + " " + st.effect, x.s0, x.s1);
+        if (!l) fail("No layer at " + x.t + "s for effect " + st.effect);
+        var idx = addFx(l, st.effect, st.effect);
+        var k;
+        for (k in (st.properties || {})) {
+            if (st.properties.hasOwnProperty(k)) {
+                var p = childProp(fxAt(l, idx), k);
+                if (!p) fail("Parameter '" + k + "' not found on " + fxAt(l, idx).name);
+                p.setValue(convertValue(p, st.properties[k]));
+            }
+        }
+        for (k in (st.keyframes || {})) {
+            if (!st.keyframes.hasOwnProperty(k)) continue;
+            var name = k, list = st.keyframes[k], keys = [];
+            for (var i = 0; i < list.length; i++) keys.push([x.t + list[i][0] * x.k, list[i][1]]);
+            keyAll(function () {
+                var pp = childProp(fxAt(l, idx), name);
+                if (!pp) fail("Parameter '" + name + "' not found");
+                return pp;
+            }, keys, st.ease);
+        }
+        return l;
+    };
+
+    RECIPES.custom = function (x, st) {
+        var comp = x.comp, t = x.t, step = st, target = x.target;
+        var layer = layerAt(comp, t, target);
+        var getPair = function () { if (!x.pair) x.pair = pairAt(comp, t, target); return x.pair; };
+        var helpers = { fxLayer: fxLayer, addFx: addFx, fxAt: fxAt, fxProp: fxProp, keyAll: keyAll, holdOut: holdOut, toRgb: toRgb, toRgba: toRgba };
+        return eval(st.script);
+    };
+
+    var NEEDS_PAIR = { cut: 1, jump_cut: 1, crossfade: 1, push: 1 };
+    var DEFAULTS = {
+        flash: [-0.05, 0.3], dip: [-0.3, 0.6], zoom: [-0.25, 0.5], punch: [0, 1], whip: [-0.15, 0.3], spin: [-0.2, 0.4],
+        blur: [-0.2, 0.4], shake: [0, 0.5], speed_ramp: [0, 1], grade: [0, 0], effect: [-0.25, 0.5], custom: [0, 0],
+        crossfade: [0, 0.5], push: [0, 0.4], cut: [0, 0], jump_cut: [0, 0]
+    };
+
+    H.applyRecipe = function (a) {
+        var c = getComp(a.comp);
+        var target = a.layer !== undefined && a.layer !== null ? getLayer(c, a.layer) : null;
+        var steps = a.steps || [];
+        var k = a.durationScale || 1;
+        var times = (a.times || []).slice(0);
+        times.sort(function (p, q) { return q - p; }); // latest first so earlier splits stay valid
+        var label = a.name || "Preset";
+        var created = [], warnings = [];
+        var gradeDone = false;
+        for (var i = 0; i < times.length; i++) {
+            var t = times[i];
+            var x = { comp: c, t: t, target: target, label: label, k: k, pair: null };
+            for (var j = 0; j < steps.length; j++) {
+                var st = steps[j];
+                var fn = RECIPES[st.kind];
+                if (!fn) { warnings.push("Unknown step kind '" + st.kind + "'"); continue; }
+                if (st.kind === "grade" && st.start === undefined && st.duration === undefined) {
+                    if (gradeDone) continue;
+                    gradeDone = true;
+                }
+                var def = DEFAULTS[st.kind] || [0, 0.5];
+                // Pair-based moves run once per edit point, and must see it before any FX layer is added.
+                if (NEEDS_PAIR[st.kind] && !x.pair) x.pair = pairAt(c, t, target);
+                var dur = (st.duration !== undefined ? st.duration : def[1]) * k;
+                x.s0 = t + (st.start !== undefined ? st.start : def[0]) * k;
+                x.s1 = x.s0 + dur;
+                x.pk = Math.max(x.s0, Math.min(x.s1, t + (st.peakAt || 0) * k));
+                var scaled = st;
+                if (k !== 1 && st.duration !== undefined) { scaled = {}; for (var key in st) if (st.hasOwnProperty(key)) scaled[key] = st[key]; scaled.duration = dur; }
+                try {
+                    var l = fn(x, scaled);
+                    if (l && l.name) created.push(l.name + " @" + Math.round(t * 1000) / 1000 + "s");
+                } catch (err) {
+                    warnings.push(st.kind + " @" + t + "s: " + (err.message || err));
+                }
+            }
+        }
+        return { comp: c.name, preset: label, times: a.times, created: created, warnings: warnings };
+    };
+
+    // Import clips and lay them end to end in a new comp; returns the edit points.
+    H.setupVideos = function (a) {
+        var paths = a.paths || [];
+        if (!paths.length) fail("paths is required");
+        var items = [];
+        for (var i = 0; i < paths.length; i++) {
+            var f = new File(paths[i]);
+            if (!f.exists) fail("File not found: " + paths[i]);
+            var found = null;
+            for (var j = 1; j <= app.project.numItems; j++) {
+                var it = app.project.item(j);
+                if (it instanceof FootageItem && it.file && it.file.fsName === f.fsName) { found = it; break; }
+            }
+            items.push(found || app.project.importFile(new ImportOptions(f)));
+        }
+        var first = items[0];
+        var total = 0;
+        for (i = 0; i < items.length; i++) total += items[i].duration;
+        var c = app.project.items.addComp(a.compName || first.name.replace(/\.[^.]+$/, "") + " edit",
+            first.width || 1920, first.height || 1080, first.pixelAspect || 1, total || 10, first.frameRate || 30);
+        var cursor = 0, clips = [], junctions = [];
+        for (i = 0; i < items.length; i++) {
+            var l = c.layers.add(items[i]);
+            l.startTime = cursor;
+            if (items[i].width && (items[i].width !== c.width || items[i].height !== c.height)) {
+                var sc = 100 * Math.max(c.width / items[i].width, c.height / items[i].height);
+                l.property("ADBE Transform Group").property("ADBE Scale").setValue([sc, sc]);
+            }
+            clips.push({ index: l.index, name: l.name, start: cursor, end: cursor + items[i].duration, file: items[i].file.fsName });
+            cursor += items[i].duration;
+            if (i < items.length - 1) junctions.push(cursor);
+        }
+        c.openInViewer();
+        return { comp: compSummary(c), clips: clips, junctions: junctions };
+    };
+
+    H.layerSource = function (a) {
+        var c = getComp(a.comp);
+        var l = getLayer(c, a.layer !== undefined ? a.layer : null);
+        var file = null;
+        try { file = l.source && l.source.file ? l.source.file.fsName : null; } catch (e) {}
+        return { comp: c.name, layer: l.name, index: l.index, file: file, startTime: l.startTime, inPoint: l.inPoint, outPoint: l.outPoint, stretch: l.stretch, timeRemap: l.timeRemapEnabled || false };
+    };
+
     // Commands that change nothing skip the undo group.
-    var READ_ONLY = { ping: 1, projectInfo: 1, listItems: 1, getComp: 1, layerProperties: 1, getProperty: 1, listEffects: 1, saveFrame: 1 };
+    var READ_ONLY = { ping: 1, projectInfo: 1, listItems: 1, getComp: 1, layerProperties: 1, getProperty: 1, listEffects: 1, saveFrame: 1, layerSource: 1 };
     // Commands that manage the project or undo stack themselves.
     var NO_UNDO = { projectFile: 1, menuCommand: 1, render: 1 };
 

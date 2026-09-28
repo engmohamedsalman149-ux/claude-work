@@ -1,6 +1,6 @@
 {
   "name": "after-effects-mcp",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "MCP server that gives Claude full control of Adobe After Effects via the Claude Bridge panel",
   "type": "module",
   "bin": {
@@ -16,5 +16,9 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.1",
     "zod": "^3.25.0"
+  },
+  "optionalDependencies": {
+    "@ffprobe-installer/ffprobe": "^2.1.2",
+    "ffmpeg-static": "^5.3.0"
   }
 }
