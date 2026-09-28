@@ -1,0 +1,20 @@
+{
+  "name": "after-effects-mcp",
+  "version": "1.0.0",
+  "description": "MCP server that gives Claude full control of Adobe After Effects via the Claude Bridge panel",
+  "type": "module",
+  "bin": {
+    "after-effects-mcp": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.1",
+    "zod": "^3.25.0"
+  }
+}
