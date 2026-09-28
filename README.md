@@ -9,7 +9,26 @@ Claude (Desktop / Code)  ──MCP──►  mcp-server (Node.js)  ──ملف�
 - `after-effects/ClaudeBridge.jsx`: بانل جوه After Effects. بيقرا الأوامر من فولدر مشترك وينفذ كل أمر في Undo Group لوحده، يعني تقدر تعمل Ctrl+Z لأي حاجة Claude عملها.
 - `mcp-server/`: سيرفر MCP بيعرض الأدوات لـ Claude.
 
-## التسطيب
+## التسطيب بضغطة واحدة (الأسهل)
+
+1. نزّل المشروع على جهازك (من GitHub: **Code › Download ZIP**) وفك الضغط.
+2. اقفل After Effects.
+3. شغّل:
+   - Windows: دبل كليك على `setup-windows.bat`
+   - macOS: دبل كليك على `setup-mac.command` (أول مرة: كليك يمين › Open)
+
+السكربت بيعمل كل ده لوحده:
+- يسطّب Node.js لو مش موجود.
+- يسطّب المكتبات.
+- ينسخ البانل لـ After Effects (هيطلب صلاحية Admin).
+- يفعّل Allow Scripts to Write Files.
+- يربط السيرفر بـ Claude Desktop و Claude Code.
+
+قبل ما يعدّل أي ملف إعدادات بياخد منه نسخة احتياطية باسم `.before-claude.bak`.
+
+بعدها افتح After Effects › **Window › ClaudeBridge.jsx**، وافتح Claude واسأله «After Effects متوصل؟».
+
+## التسطيب اليدوي
 
 ### 1) جوه After Effects
 
