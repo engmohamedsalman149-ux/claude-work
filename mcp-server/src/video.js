@@ -13,7 +13,9 @@ export async function binaries() {
   let ffprobe = process.env.FFPROBE_PATH;
   if (!ffmpeg) {
     try {
-      ffmpeg = (await import("ffmpeg-static")).default;
+      const p = (await import("ffmpeg-static")).default;
+      // The package can be installed without its binary when npm skipped its install script.
+      if (p && (await fs.access(p).then(() => true, () => false))) ffmpeg = p;
     } catch {}
   }
   if (!ffprobe) {
@@ -36,7 +38,7 @@ function run(cmd, args, { binary = false } = {}) {
       if (err.length > 20000) err = err.slice(-10000);
     });
     p.on("error", (e) =>
-      reject(e.code === "ENOENT" ? new Error(`${cmd} not found. Install ffmpeg or set FFMPEG_PATH/FFPROBE_PATH.`) : e)
+      reject(e.code === "ENOENT" ? new Error(`${cmd} not found. Run setup again (it downloads ffmpeg), install ffmpeg, or set FFMPEG_PATH/FFPROBE_PATH.`) : e)
     );
     p.on("close", (code) => {
       const buf = Buffer.concat(out);

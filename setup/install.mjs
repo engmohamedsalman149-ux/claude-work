@@ -169,13 +169,33 @@ function configureClaudeDesktop() {
 
 function configureClaudeCode() {
   step("Registering with Claude Code");
-  const shell = isWin;
-  const has = spawnSync("claude", ["--version"], { shell, encoding: "utf8" });
+  // Windows needs the shell to find claude.cmd; pass one quoted string so args aren't concatenated unescaped.
+  const claude = (args, opts) =>
+    isWin
+      ? spawnSync(["claude", ...args].map((a) => (/[\s"]/.test(a) ? `"${a.replace(/"/g, '\\"')}"` : a)).join(" "), { shell: true, ...opts })
+      : spawnSync("claude", args, opts);
+  const has = claude(["--version"], { encoding: "utf8" });
   if (has.status !== 0) { warn("Claude Code CLI not found (skipped)."); return; }
-  spawnSync("claude", ["mcp", "remove", "--scope", "user", "after-effects"], { shell, stdio: "ignore" });
-  const r = spawnSync("claude", ["mcp", "add", "--scope", "user", "after-effects", "--", "node", serverEntry.replace(/\\/g, "/")], { shell, encoding: "utf8" });
+  claude(["mcp", "remove", "--scope", "user", "after-effects"], { stdio: "ignore" });
+  const r = claude(["mcp", "add", "--scope", "user", "after-effects", "--", "node", serverEntry.replace(/\\/g, "/")], { encoding: "utf8" });
   if (r.status === 0) ok("claude mcp add after-effects (user scope)");
   else warn(`claude mcp add failed: ${(r.stderr || r.stdout || "").trim()}`);
+}
+
+// ---------------------------------------------------------------- ffmpeg
+
+// Newer npm versions skip install scripts unless approved, so ffmpeg-static may not have
+// downloaded its binary. Run its installer directly when the binary is missing.
+function ensureFfmpeg() {
+  step("Checking ffmpeg (used for video analysis)");
+  const pkg = path.join(repo, "mcp-server", "node_modules", "ffmpeg-static");
+  const bin = path.join(pkg, isWin ? "ffmpeg.exe" : "ffmpeg");
+  if (!fs.existsSync(bin) && fs.existsSync(path.join(pkg, "install.js"))) {
+    console.log("  Downloading ffmpeg...");
+    spawnSync(process.execPath, ["install.js"], { cwd: pkg, stdio: "inherit" });
+  }
+  if (fs.existsSync(bin)) ok(bin);
+  else warn("ffmpeg could not be downloaded. Install ffmpeg and set FFMPEG_PATH, or video analysis will not work.");
 }
 
 // ---------------------------------------------------------------- main
@@ -185,9 +205,12 @@ async function main() {
   console.log(`Project: ${repo}`);
   if (!fs.existsSync(path.join(repo, "mcp-server", "node_modules", "@modelcontextprotocol"))) {
     step("Installing server dependencies (npm install)");
-    const r = spawnSync("npm", ["install", "--no-fund", "--no-audit"], { cwd: path.join(repo, "mcp-server"), stdio: "inherit", shell: isWin });
+    const r = isWin
+      ? spawnSync("npm install --no-fund --no-audit", { cwd: path.join(repo, "mcp-server"), stdio: "inherit", shell: true })
+      : spawnSync("npm", ["install", "--no-fund", "--no-audit"], { cwd: path.join(repo, "mcp-server"), stdio: "inherit" });
     if (r.status !== 0) throw new Error("npm install failed");
   }
+  ensureFfmpeg();
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   try {
     installPanel();
