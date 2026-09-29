@@ -6,8 +6,8 @@
 | Phase | الحالة | المخرجات |
 |---|---|---|
 | 1 SOURCE AUDIT | ✅ مكتمل — 5 كتب مقروءة كاملًا + ملف مصدر للفيلم | `00_SOURCE_AUDIT/01_SOURCE_AUDIT.md` · `concept_table.csv` (189 صفًا) · `notes/` |
-| 2 KNOWLEDGE EXTRACTION | ▶️ التالي | — |
-| 3 KNOWLEDGE GRAPH | ⏸ | — |
+| 2 KNOWLEDGE EXTRACTION | ✅ مكتمل — 142 مدخلًا بالحقول العشرة، مرتبة على المراحل الثماني | `01_KNOWLEDGE_BASE/02_KNOWLEDGE_BASE.md` · `knowledge_base.csv` |
+| 3 KNOWLEDGE GRAPH | ▶️ التالي | — |
 | 4 INTEGRATED FRAMEWORK | ⏸ | — |
 | 5 MASTERCLASS STRUCTURE | ⏸ | — |
 | 6 FULL SCRIPT | ⏸ | — |
