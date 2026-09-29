@@ -1,0 +1,79 @@
+﻿CONCEPT_ID,CONCEPT,ROLE,FIRST_EPISODE,ALL_EPISODES,SCENES,APPEARANCES,KB_IDS_OR_NOTE
+P1,جرس الإنذار / النوبة الانفعالية,PRIMARY,E2,E2,E2-02;E2-03,2,see 02_KNOWLEDGE_GRAPH/08 §13
+P2,الانفعال في الجسد,PRIMARY,E2,E2,E2-01;E2-05,2,see 02_KNOWLEDGE_GRAPH/08 §13
+P3,الإنذارات القديمة والمثيرات,PRIMARY,E2,E2,E2-04,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P4,القشرة الأمامية — أم جيسكا,PRIMARY,E2,E2,E2-03,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P5,التفسير يصنع الشعور,PRIMARY,E1,E1,E1-01;E1-03;E1-04,3,see 02_KNOWLEDGE_GRAPH/08 §13
+P6,الحقيقة مقابل التفسير,PRIMARY,E1,E1,E1-05;E1-08,2,see 02_KNOWLEDGE_GRAPH/08 §13
+P7,الفكرة التلقائية/الساخنة والدليل,PRIMARY,E1,E1,E1-05;E1-06,2,see 02_KNOWLEDGE_GRAPH/08 §13
+P8,الفكرة المتوازنة — ليست إيجابية,PRIMARY,E1,E1,E1-07,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P9,الوعي بالذات (الساموراي),PRIMARY,E3,E3,E3-02,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P10,اليقظة والمسافة,PRIMARY,E3,E3,E3-01;E3-03;E3-04;E3-06,4,see 02_KNOWLEDGE_GRAPH/08 §13
+P11,تسمية الشعور,PRIMARY,E3,E3,E3-05,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P12,التنظيم: لا كبت ولا تنفيس — ترجع أسرع,PRIMARY,E3,E3,E3-07,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P13,المنظور والمعلومة التي تقلب الصورة,PRIMARY,E4,E4,E4-01,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P14,التعاطف (يحتاج وعيًا وهدوءًا),PRIMARY,E4,E4,E4-02,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P15,الاحتياج تحت الغضب والحكم,PRIMARY,E4,E4;E6,E4-03;E6-05,2,see 02_KNOWLEDGE_GRAPH/08 §13
+P16,الفهم ليس موافقة,PRIMARY,E5,E5,E5-02,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P17,الطوفان والوقت المستقطع,PRIMARY,E6,E6,E6-01,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P18,الشكوى لا النقد,PRIMARY,E6,E6,E6-02,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P19,NVC والطلب الواضح,PRIMARY,E6,E6,E6-03;E6-04,2,see 02_KNOWLEDGE_GRAPH/08 §13
+P20,الأمان: الصمت والعنف والهدف المشترك,PRIMARY,E7,E7,E7-01;E7-02;E7-03,3,see 02_KNOWLEDGE_GRAPH/08 §13
+P21,ابدأ بالقلب + «و»,PRIMARY,E7,E7,E7-03,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P22,STATE,PRIMARY,E7,E7,E7-04,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P23,ازدواجية الاستخدام ← Dark EQ كإطار,PRIMARY,E5,E5;E8,E5-04;E8-02,2,see 02_KNOWLEDGE_GRAPH/08 §13
+P24,أنماط الضغط,PRIMARY,E8,E8,E8-04;E8-05;E8-07,3,see 02_KNOWLEDGE_GRAPH/08 §13
+P25,النمط مقابل الواقعة + معايرة الرادار,PRIMARY,E8,E8;E9,E8-06;E9-01,2,see 02_KNOWLEDGE_GRAPH/08 §13
+P26,الحدود والتوكيد,PRIMARY,E9,E9,E9-03,1,see 02_KNOWLEDGE_GRAPH/08 §13
+P27,الحماية + حدود إعادة التأطير,PRIMARY,E7,E7;E9,E7-04;E9-02;E9-05,3,see 02_KNOWLEDGE_GRAPH/08 §13
+P28,النظام المتكامل + الممارسة,PRIMARY,E10,E10,E10-02;E10-04,2,see 02_KNOWLEDGE_GRAPH/08 §13
+KB-002,تحدي أرسطو,SUPPORTING,E3,E3,E3-07,1,KB-002
+KB-010,تجمّد الذاكرة العاملة,SUPPORTING,E2,E2;E3,E2-03;E3-06,2,KB-010
+KB-011,المشاعر ضرورية للقرار,SUPPORTING,E9,E9,E9-01,1,KB-011
+KB-013,النموذج الخماسي,SUPPORTING,E1,E1,E1-04,1,KB-013
+KB-014,القلق جهاز إنذار يُضبط لا يُفصل,SUPPORTING,E2,E2,E2-02,1,KB-014
+KB-016,المزاج السيئ يصنع تفكيرًا سيئًا,SUPPORTING,E1,E1,E1-01,1,KB-016
+KB-021,الطيار الآلي,SUPPORTING,E3,E3,E3-03,1,KB-021
+KB-023,النَّفَس مرساة,SUPPORTING,E3,E3,E3-05,1,KB-023
+KB-025,الهدوء الظاهري ≠ غياب الانفعال,SUPPORTING,E3,E3;E5,E3-07;E5-04,2,KB-025
+KB-026,لا توقف الموج… تعلّم ركوبه,SUPPORTING,E3,E3,E3-03,1,KB-026
+KB-031,الصبر: انتظر حتى يترسب الطين,SUPPORTING,E9,E9,E9-04,1,KB-031
+KB-032,نظارات الحلم,SUPPORTING,E4,E4,E4-02,1,KB-032
+KB-047,القصص الذكية الثلاث — وأكمل القصة,SUPPORTING,E4,E4,E4-01,1,KB-047
+KB-054,القبول ليس استسلامًا,SUPPORTING,E9,E9,E9-04,1,KB-054
+KB-057,التحيز العدائي وشخصنة الأفعال,SUPPORTING,E1,E1,E1-03,1,KB-057
+KB-059,الحقيقة في «الكيف» لا في «الكلام»,SUPPORTING,E4,E4,E4-04,1,KB-059
+KB-062,التوافق وإعادة الصياغة كسؤال,SUPPORTING,E4,E4,E4-04,1,KB-062
+KB-067,أربع خيارات لتلقي رسالة سلبية,SUPPORTING,E4,E4,E4-01,1,KB-067
+KB-068,الجودو العاطفي,SUPPORTING,E5,E5,E5-03,1,KB-068
+KB-077,النقد البارع — للمُرسل والمتلقي,SUPPORTING,E4,E4,E4-01,1,KB-077
+KB-080,التقدير والامتنان — للاحتفاء لا للتلاعب,SUPPORTING,E10,E10,E10-03,1,KB-080
+KB-081,الاعتذار والإصلاح,SUPPORTING,E6,E6,E6-05,1,KB-081
+KB-082,المحادثة الحاسمة,SUPPORTING,E7,E7,E7-01,1,KB-082
+KB-083,الحوار وحوض المعنى المشترك,SUPPORTING,E7,E7,E7-02,1,KB-083
+KB-088,المقابلة (Contrasting) وCRIB — والاعتذار,SUPPORTING,E7,E7,E7-03,1,KB-088
+KB-096,حل النزاع بالاحتياجات — خمس خطوات,SUPPORTING,E6,E6,E6-05,1,KB-096
+KB-098,الانفعال المصطنع كأداة ضغط,SUPPORTING,E8,E8,E8-07,1,KB-098
+KB-100,إسكات التعاطف بالتبرير,SUPPORTING,E8,E8,E8-04,1,KB-100
+KB-101,المتلوّنون اجتماعيًا — والاستقامة العاطفية,SUPPORTING,E8,E8;E9,E8-06;E9-06,2,KB-101
+KB-105,المديح المتلاعب,SUPPORTING,E8,E8,E8-07,1,KB-105
+KB-106,لغة السلطة وإنكار المسؤولية,SUPPORTING,E8,E8,E8-06,1,KB-106
+KB-108,صمت الشهود قبول ضمني,SUPPORTING,E8,E8,E8-05,1,KB-108
+KB-110,الغطاء الأخلاقي أو الديني للأذى,SUPPORTING,E8,E8,E8-04,1,KB-110
+KB-111,خلق الاعتمادية والعطاء غير الواعي,SUPPORTING,E8,E8;E9,E8-06;E9-03,2,KB-111
+KB-112,لا تتنازل عن سلطتك الداخلية,SUPPORTING,E9,E9,E9-04,1,KB-112
+KB-116,غياب الغضب أمام الإساءة مشكلة أيضًا,SUPPORTING,E8,E8;E9,E8-05;E9-02,2,KB-116
+KB-117,المسامحة ليست إلزامية — ولست مذنبًا — والمسافة مشروعة,SUPPORTING,E9,E9,E9-05,1,KB-117
+KB-118,القوة الحامية مقابل القوة العقابية — واختبار النية,SUPPORTING,E9,E9,E9-06,1,KB-118
+KB-119,لوم الذات وفطيرة المسؤولية,SUPPORTING,E9,E9,E9-02,1,KB-119
+KB-121,المعلومات وحدها لا تحمي,SUPPORTING,E9,E9,E9-05,1,KB-121
+KB-124,الامتثال تحت الضغط ليس موافقة,SUPPORTING,E8,E8,E8-04,1,KB-124
+KB-125,التجاوز الصريح: خاص، محترم، حازم — ثم التصعيد,SUPPORTING,E9,E9,E9-05,1,KB-125
+KB-128,لا تشخّص — صف السلوك,SUPPORTING,E8,E8,E8-03,1,KB-128
+KB-129,لا تدخل لعبة الانفعال — اختبار «أهيمسا»,SUPPORTING,E9,E9,E9-04,1,KB-129
+KB-131,حالة «العمدة عتمان»,SUPPORTING,E1,E1;E5;E9,E1-08;E5-04;E9-06,3,KB-131
+KB-132,درع Dark EQ — الأساس المصدري لكل بند,SUPPORTING,E9,E9,E9-07,1,KB-132
+KB-134,دروس صغيرة ومتكررة — وإشارات تذكير,SUPPORTING,E10,E10,E10-04,1,KB-134
+KB-135,مقياس لا أبيض وأسود — التقدم لا الكمال,SUPPORTING,E10,E10,E10-04,1,KB-135
+KB-139,الطبع ليس قدرًا — والمخ يتعلم مدى الحياة,SUPPORTING,E10,E10,E10-05,1,KB-139
+KB-141,صور الختام: «إن لم يكن الآن فمتى؟» — المحارة — المصعد,SUPPORTING,E10,E10,E10-05,1,KB-141

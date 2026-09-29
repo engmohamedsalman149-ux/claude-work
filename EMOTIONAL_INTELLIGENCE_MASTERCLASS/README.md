@@ -8,8 +8,8 @@
 | 1 SOURCE AUDIT | ✅ مكتمل — 5 كتب مقروءة كاملًا + ملف مصدر للفيلم | `00_SOURCE_AUDIT/01_SOURCE_AUDIT.md` · `concept_table.csv` (189 صفًا) · `notes/` |
 | 2 KNOWLEDGE EXTRACTION | ✅ مكتمل — 142 مدخلًا بالحقول العشرة، مرتبة على المراحل الثماني | `01_KNOWLEDGE_BASE/02_KNOWLEDGE_BASE.md` · `knowledge_base.csv` |
 | 3 KNOWLEDGE GRAPH | ✅ مكتمل — خريطتان: معرفة (103 عقدة، 193 علاقة مصنفة) + قصة (8 فصول، 28 مفهومًا أساسيًا) | `02_KNOWLEDGE_GRAPH/` (01–09 + `_build/`) |
-| 4 INTEGRATED FRAMEWORK | ▶️ التالي | — |
-| 5 MASTERCLASS STRUCTURE | ⏸ | — |
+| 4 INTEGRATED FRAMEWORK | ✅ مكتمل — السلسلة مكتشفة من القصة: **10 حلقات، ~126 دقيقة** (8–17د)، 66 مشهدًا | `03_INTEGRATED_FRAMEWORK/` (01–12 + `_build/`) |
+| 5 MASTERCLASS STRUCTURE | ▶️ التالي (مخطط تفصيلي لكل حلقة) | — |
 | 6 FULL SCRIPT | ⏸ | — |
 | 7 PRESENTATION | ⏸ | — |
 | 8 DARK EQ MODULE | ⏸ الأساس المصدري جاهز؛ حوار الفيلم يُتحقق بالمشاهدة | — |
@@ -17,6 +17,9 @@
 | 10 VIDEO PRODUCTION | ⏸ | — |
 | 11 YOUTUBE PACKAGE | ⏸ | — |
 | 12 FINAL QA | ⏸ | — |
+
+## الصيغة (منذ المرحلة 4)
+سلسلة حلقات **مكتشفة من القصة** لا مفروضة: 10 حلقات، ~126 دقيقة، أطوال مرنة. التفاصيل في `03_INTEGRATED_FRAMEWORK/02_EPISODE_MAP.md`.
 
 ## التوجيه الإبداعي (منذ المرحلة 3)
 المعيار الأول لكل قرار: **«هل سيكمل المشاهد الفرجة؟»**
