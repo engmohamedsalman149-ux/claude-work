@@ -1,0 +1,38 @@
+# Mind Over Mood — working notes (SOURCE-QUALITY WARNING)
+Ref: L#### = line in uploaded `Mind_Over_Mood_PDF.md`.
+
+## ⚠ SOURCE STATUS
+- The uploaded file is NOT the book. It is a **Bookey third-party summary** ("Written by Bookey", L19) of *Mind Over Mood, 2nd ed.* (Greenberger & Padesky, Guilford 2016 — per worksheet copyright notes L1746, L2064, L2259).
+- Paywall gaps: "Install Bookey App to Unlock Full Text and Audio" (e.g., L405, L540, L952) — chapters 3, 6, 12 truncated.
+- Bookey "Critical Thinking" boxes contain Bookey's OWN commentary, some of it clearly unreliable (e.g., L673 claims Stephen Hawking criticized CBT in *The Universe in a Nutshell*; L912 frames Albert Ellis as a critic). → EXCLUDE entirely.
+- Bookey "Quotes From Pages …" (L2638–3447) are NOT verifiable verbatim quotes; some are obviously not from MoM (L3291 "The only thing we have to fear is fear itself" = F. D. Roosevelt; L3293 Corrie ten Boom-style quote). → DO NOT QUOTE ANY OF THEM as Greenberger/Padesky.
+- Bookey Q&A (L3484–) = Bookey paraphrase. Use only to confirm concept names/cases.
+- Page numbers in "Quotes From Pages" refer to unknown pagination → NOT usable as book pages.
+- POLICY for masterclass: Mind Over Mood content = **[PARAPHRASE VIA THIRD-PARTY SUMMARY]**; concept names only (Thought Record, automatic thoughts, hot thought, evidence, balanced thoughts, underlying assumptions, core beliefs, action plan, acceptance, behavioral experiments, 5-part model). No direct quotes. Recommend user supply the actual book for verification → BLOCKER (partial).
+
+## Content (as reported by Bookey)
+- L30: workbook; cognitive therapy; worksheets; mood questionnaires; ABCT Self-Help Book of Merit.
+- L86–169: 16 chapters + worksheets list (9.2 Thought Record; 10.2 Action Plan; 11.2 Experiments; 12.6–12.9 core beliefs; 13.1 depression inventory; 13.6 activity schedule; 14.1 anxiety inventory; 14.4–14.5 fear ladder; 15.1–15.2 mood tracking; 15.4 forgiveness letter; 15.9 forgiving myself; 16.2 relapse plan).
+- L185–201 (Ch1 worksheets table): 3.1 Thought Connections; 4.1 Identifying Moods; 4.2 Identifying and Rating Moods; 5.1–5.4 goals; 6.1 Distinguishing Situations, Moods, and Thoughts; 7.1 Connecting Thoughts and Moods; 7.2 Separating S/M/T; 7.3 Identifying Automatic Thoughts; 7.4 Identifying Hot Thoughts; 8.1 Facts versus Interpretations; 8.2 Where's the Evidence?; 9.1 Linda's Thought Record.
+- Ch2 (L331–370): Ben (73? — actually Sylvie 73) — depression after friend Louie's death & Sylvie's breast cancer; "just old."
+- Ch2 Q&A (L3631–3637): FIVE-PART MODEL: thoughts, moods/feelings, behaviors, physical reactions, environment/life events — interconnected. (Core model for "Thoughts→Emotions→Behavior" segment; attribute as "نموذج الأجزاء الخمسة في Mind Over Mood (حسب ملخص)")
+- Ch3 (L377–405, L3668–3791): It's the Thought That Counts: thought–mood (party example: interpreting someone's behavior → irritated vs other); job loss: different beliefs → different moods; Marissa "unlovable" distorts positive feedback; thought–behavior (Roger Bannister 4-min mile; family buffet example); thought–physical (athletes' visualization; placebo); Linda heart racing after exercise → anxious thoughts (bidirectional body↔thought).
+- Ch4 (L441–492): identify & rate moods; beyond "bad/good"; mood list; physical sensations as clues (e.g., tight shoulders → irritation; tight chest/rapid heart → anxiety; heaviness → depression — Q&A L3849, L3887); exercise: identify 3 moods daily; Vic lumped anger/anxiety/discomfort; distinguishing moods from thoughts ("Ben" wants to be alone → sadness + thought unwanted). Rating moods 0–100 (Worksheet 4.2).
+- Ch5 (L499–513): goals; Alice & Cheshire Cat.
+- Ch6 (L520–540): tennis coach — skills broken into components; Thought Record introduced (truncated).
+- Ch7 (L581–673): AUTOMATIC THOUGHTS: Marissa anxious after supervisor compliment (thought: mistakes will be noticed → fired); Vic angry after wife changed the oil (thought: she thinks I didn't do it / not appreciated); identify via strong emotions; general + mood-specific questions (e.g., "What was going through my mind just before I started to feel this way?" — Q&A L4149); images/memories evoke stronger moods (L4172). HOT THOUGHT = thought carrying most emotional charge (Worksheet 7.4).
+- Ch8 (L680–730): WHERE'S THE EVIDENCE: Vic & Judy — AA meeting; Vic interpreted her reaction as no support; stormed out; drove to liquor store; paused, remembered therapist: identify thoughts, seek evidence before acting. (EXCELLENT "pause" story + evidence; converges with CC facts vs story, Kabat-Zinn pause [INTEGRATED SYNTHESIS]). Worksheet 8.1 Facts versus Interpretations.
+- Ch9 (L737–771): ALTERNATIVE/BALANCED THINKING: Akiko sick with flu, angry at daughter Yuki's mess → finds get-well card → tenderness ("a little bit of additional information shifts interpretation 180 degrees" — Bookey quote, paraphrase only). Vic misread wife's facial expression. (EXCELLENT story for reframe; almost identical structure to CC motel twist.)
+- Ch10 (L820–856): balanced thoughts ≠ positive thinking; based on evidence; rerate mood (column 7); believability matters; no mood change → troubleshooting; Action Plans; Acceptance (title).
+- Ch11 (L863–912): UNDERLYING ASSUMPTIONS: "If … then …" (Shauntelle & Trey punctuality: "If we don't arrive on time, then it will be disrespectful" vs "If we arrive on time, then it will pressure the hosts"); tested by BEHAVIORAL EXPERIMENTS, not Thought Records. (Great couple case; → Dark EQ: "If I refuse, then I'm a bad person" assumption [INTEGRATED SYNTHESIS])
+- Ch12 (L919–952): CORE BELIEFS: garden metaphor (flowers/weeds); levels: automatic thoughts → underlying assumptions → core beliefs; all-or-nothing about self/others/world ("worthless", "others are dangerous"); formed in childhood; activated by moods; strengthen positive core beliefs; downward arrow (truncated).
+- Ch13 (L1017–1084): depression profiles Ben/Vic/Marissa; healthy sadness vs depression; Depression Inventory (19 items 0–3; L1944–2003) — clinical; NOT for YouTube scoring; mention "seek professional help" only.
+- Ch14 (L1093–1196): anxiety types (phobias, social anxiety, panic, PTSD, health worries, GAD); Linda flying/panic; Anxiety Inventory; Fear Ladder.
+- Ch15 (L1203–1257): ANGER, GUILT, SHAME: Vic's explosive anger linked to feelings of disrespect; Marissa shame from past abuse; "Anger … often leads us to attack and hurt others"; guilt/shame → attack/hurt ourselves (Bookey quote list L2983–2989 — paraphrase only). Forgiveness letter (L2450–2487: forgiveness ≠ approval/denial of hurt; letting go of anger). Self-forgiveness worksheet (L2528–2563).
+- Ch16 (L1302–1397): maintaining gains; fisherman parable; stages: conscious application → automatic use → ingrained; setbacks = opportunity; relapse plan: high-risk situations, early warning signs.
+- Worksheet 9.2 Thought Record (L1415–1471): rate emotions & thoughts 0–100%; generate alternatives. (Standard 7 columns: Situation / Moods (rate) / Automatic Thoughts (hot thought) / Evidence that supports / Evidence that does not support / Alternative-balanced thoughts (rate belief) / Rerate moods — column 7 confirmed L830; full column list = [EXTERNAL KNOWLEDGE] consistent with L830/L826)
+- Worksheet 10.2 Action Plan (L1478–1539): goal, time to begin, possible problems, strategies, actions, progress.
+- Worksheet 11.2 (L1589–1641): experiment design.
+
+## Mindfulness in MoM?
+- grep: "mindfulness" appears only in Bookey Q&A/quotes (e.g., L6157…) — NOT reliable as MoM content. [NOT SUPPORTED BY PROVIDED SOURCE] that MoM (as provided) teaches mindfulness. (Real 2nd ed. includes mindfulness/acceptance material — [EXTERNAL KNOWLEDGE], unverifiable here.)
