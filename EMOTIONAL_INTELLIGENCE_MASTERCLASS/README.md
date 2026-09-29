@@ -7,8 +7,8 @@
 |---|---|---|
 | 1 SOURCE AUDIT | ✅ مكتمل — 5 كتب مقروءة كاملًا + ملف مصدر للفيلم | `00_SOURCE_AUDIT/01_SOURCE_AUDIT.md` · `concept_table.csv` (189 صفًا) · `notes/` |
 | 2 KNOWLEDGE EXTRACTION | ✅ مكتمل — 142 مدخلًا بالحقول العشرة، مرتبة على المراحل الثماني | `01_KNOWLEDGE_BASE/02_KNOWLEDGE_BASE.md` · `knowledge_base.csv` |
-| 3 KNOWLEDGE GRAPH | ▶️ التالي | — |
-| 4 INTEGRATED FRAMEWORK | ⏸ | — |
+| 3 KNOWLEDGE GRAPH | ✅ مكتمل — خريطتان: معرفة (103 عقدة، 193 علاقة مصنفة) + قصة (8 فصول، 28 مفهومًا أساسيًا) | `02_KNOWLEDGE_GRAPH/` (01–09 + `_build/`) |
+| 4 INTEGRATED FRAMEWORK | ▶️ التالي | — |
 | 5 MASTERCLASS STRUCTURE | ⏸ | — |
 | 6 FULL SCRIPT | ⏸ | — |
 | 7 PRESENTATION | ⏸ | — |
@@ -17,6 +17,14 @@
 | 10 VIDEO PRODUCTION | ⏸ | — |
 | 11 YOUTUBE PACKAGE | ⏸ | — |
 | 12 FINAL QA | ⏸ | — |
+
+## التوجيه الإبداعي (منذ المرحلة 3)
+المعيار الأول لكل قرار: **«هل سيكمل المشاهد الفرجة؟»**
+- المشاهد هو البطل، والكتب الخمسة عدسات لا فصول.
+- المعلومة وقود لا منتج: 28 مفهومًا أساسيًا فقط تحمل القصة، والباقي مكتبة.
+- Dark EQ انقلاب في منتصف القصة الثاني، دفاعي وأخلاقي.
+- عتمان خيط متكرر مبني على سلوك مؤكد فقط.
+- المعمار في `02_KNOWLEDGE_GRAPH/08_STORY_ARCHITECTURE.md` و`09_RETENTION_ARCHITECTURE.md`.
 
 ## المصادر
 | الكتاب | حالة الملف |

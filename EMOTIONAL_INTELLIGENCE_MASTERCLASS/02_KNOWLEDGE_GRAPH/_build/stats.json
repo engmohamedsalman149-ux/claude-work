@@ -1,0 +1,137 @@
+{
+ "nodes": 103,
+ "edges": 193,
+ "case_edges": 13,
+ "rejected": 14,
+ "by_class": {
+  "DIRECT_SOURCE_RELATIONSHIP": 89,
+  "CROSS_BOOK_PARALLEL": 23,
+  "INTEGRATED_SYNTHESIS": 72,
+  "CROSS_BOOK_DIFFERENCE": 9
+ },
+ "film_items": 18,
+ "film_needs": 12,
+ "film_corroborated": 6,
+ "orphans": [],
+ "kb_covered": 119,
+ "ct_covered": 155,
+ "by_level": {
+  "1": 10,
+  "2": 13,
+  "3": 11,
+  "4": 12,
+  "5": 11,
+  "6": 33,
+  "7": 13
+ },
+ "by_type": {
+  "MODEL": 32,
+  "SKILL": 33,
+  "FRAME": 14,
+  "PATTERN": 13,
+  "DEF_SKILL": 10,
+  "CASE": 1
+ },
+ "by_domain": {
+  "SHARED": 44,
+  "HEALTHY": 17,
+  "DEFENSIVE": 32,
+  "FRAMEWORK": 10
+ },
+ "by_tag": {
+  "DIRECT_SOURCE": 40,
+  "CROSS_BOOK": 48,
+  "INTEGRATED_SYNTHESIS": 3,
+  "USER_FRAMEWORK": 11,
+  "FICTIONAL_CASE_STUDY": 1
+ },
+ "hubs": [
+  [
+   "N60",
+   "«Dark EQ» — إطار دفاعي من تصميم المشروع",
+   13
+  ],
+  [
+   "N82",
+   "الحماية: دعم، تصعيد، استعادة السيطرة، مسافة",
+   10
+  ],
+  [
+   "N47",
+   "النوبة الانفعالية (الخطف)",
+   9
+  ],
+  [
+   "N19",
+   "التنظيم الانفعالي — اعتدال لا كبت",
+   9
+  ],
+  [
+   "N24",
+   "التعاطف",
+   9
+  ],
+  [
+   "N18",
+   "الوقفة — مساحة الاستجابة",
+   8
+  ],
+  [
+   "N36",
+   "مكونات NVC الأربعة",
+   8
+  ],
+  [
+   "N91",
+   "درع Dark EQ",
+   8
+  ],
+  [
+   "N06",
+   "الوعي بالذات",
+   7
+  ],
+  [
+   "N17",
+   "اليقظة الذهنية",
+   7
+  ],
+  [
+   "N61",
+   "ازدواجية استخدام المهارة الاجتماعية",
+   7
+  ],
+  [
+   "N65",
+   "الذنب كأداة ضغط",
+   7
+  ],
+  [
+   "N80",
+   "الحدود — ليست عدوانًا",
+   7
+  ],
+  [
+   "N02",
+   "الانفعال: نزوع للفعل + بصمة جسدية",
+   6
+  ],
+  [
+   "N78",
+   "معايرة الرادار — لا سذاجة ولا بارانويا",
+   6
+  ]
+ ],
+ "no_scene": [
+  "N23"
+ ],
+ "roles": {
+  "PRIMARY": 60,
+  "SUPPORTING": 41,
+  "LIBRARY": 2
+ },
+ "library_nodes": [
+  "N72",
+  "N73"
+ ]
+}

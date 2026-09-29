@@ -1,0 +1,104 @@
+﻿NODE_ID,LEVEL,CONCEPT_AR,CONCEPT_EN,NODE_TYPE,DOMAIN,SOURCE,CHAPTER,PAGE,SOURCE_TAG,KB_IDS,CT_ROWS,STORY_ROLE,PRIMARY_CONCEPT,STORY_SCENE
+N01,1,المخ الانفعالي — جرس الإنذار (الأميجدالا),Emotional brain / amygdala alarm,MODEL,SHARED,Goleman,ف1–2,ص23–44,DIRECT_SOURCE,KB-004;KB-005;KB-006,2;147,PRIMARY,P1,S1.2
+N02,1,الانفعال: نزوع للفعل + بصمة جسدية,Emotion,MODEL,SHARED,Goleman,ف1,ص20–22,DIRECT_SOURCE,KB-003,2;147,PRIMARY,P2,S1.1
+N03,1,الفكرة التلقائية,Automatic thought,MODEL,SHARED,MoM;Goleman,"MoM Ch.3,7؛ Gol ف9","MoM p.19,50–56؛ Gol ص197–198",CROSS_BOOK,KB-041,112;113;171,PRIMARY,P7,S2.3
+N04,1,الانتباه والطيار الآلي,Attention / automatic pilot,MODEL,SHARED,KZ;NVC,KZ Introduction؛ NVC Ch.1,KZ p.9–16؛ NVC L442,CROSS_BOOK,KB-021,73,SUPPORTING,,S3.2
+N05,1,الوعي الذي يحتوي التجربة,Awareness as container,MODEL,SHARED,KZ;MoM,"KZ Vision، Not Positive Thinking؛ MoM Ch.10,14","KZ p.63–64,71–72؛ MoM p.129,242",CROSS_BOOK,KB-027;KB-028,84;85;122,PRIMARY,P10,S3.3
+N06,1,الوعي بالذات,Self-awareness,SKILL,SHARED,Goleman,ف4,ص73–75,DIRECT_SOURCE,KB-018;KB-019,151,PRIMARY,P9,S3.1
+N07,1,القشرة الأمامية — مفتاح الإيقاف,Prefrontal off-switch,MODEL,SHARED,Goleman,ف2,ص45–48,DIRECT_SOURCE,KB-008,149,PRIMARY,P4,S1.3
+N08,1,النموذج الخماسي,Five-part model,MODEL,SHARED,MoM,Ch.2,p.7–8,DIRECT_SOURCE,KB-013,103,SUPPORTING,,S2.2
+N09,1,الذاكرة الانفعالية والإنذارات القديمة,Emotional memory / obsolete alarms,MODEL,SHARED,Goleman;MoM,Gol ف2؛ MoM Ch.7,Gol ص40–42؛ MoM p.61–63,CROSS_BOOK,KB-009,149;114,PRIMARY,P3,S1.4
+N10,1,المشاعر مرشد للقرار,Emotions guide decisions,MODEL,SHARED,Goleman,ف2، ف4,"ص49–50,80–83",DIRECT_SOURCE,KB-011,147,SUPPORTING,,S7.1
+N11,2,المثيرات,Emotional triggers,SKILL,SHARED,KZ;CC;MoM;Goleman,KZ Not Practicing Is Practicing؛ CC Ch.4؛ MoM Ch.11؛ Gol ف2,KZ p.106؛ CC p.47–49؛ MoM p.141–142؛ Gol ص41,CROSS_BOOK,KB-033,89;13,PRIMARY,P3,S1.4
+N12,2,إشارات الجسد المبكرة,Early body cues,SKILL,SHARED,CC;MoM;KZ;Goleman,"CC Ch.4؛ MoM Ch.4,15؛ KZ Lying-Down؛ Gol ف5,ف15","CC p.48–49؛ MoM p.26,260–261؛ KZ p.101–103؛ Gol ص112–115,327",CROSS_BOOK,KB-024;KB-025,13;88;108;138;157,PRIMARY,P2,S1.5
+N13,2,التفسير / القصة,Cognitive interpretation / story,MODEL,SHARED,MoM;CC,MoM Ch.3؛ CC Ch.6,MoM p.16–17؛ CC p.98–101,CROSS_BOOK,KB-038;KB-040,104;20;21,PRIMARY,P5,S2.1
+N14,2,تسمية الشعور,Naming the emotion,SKILL,SHARED,Goleman;MoM;NVC;CC,"Gol ف4,ف15؛ MoM Ch.4؛ NVC Ch.4؛ CC Ch.6","Gol ص73–80,337–341؛ MoM p.25–30؛ NVC L965–1063؛ CC p.103–104",CROSS_BOOK,KB-035;KB-036;KB-037,22;185;107;49;109,PRIMARY,P11,S3.4
+N15,2,الفكرة الساخنة وفحص الدليل,Hot thought & evidence,SKILL,SHARED,MoM,Ch.7–8,p.61–75,DIRECT_SOURCE,KB-042;KB-044,114;117,PRIMARY,P7,S2.4
+N16,2,إعادة البناء المعرفي — الفكرة المتوازنة,Cognitive restructuring,SKILL,SHARED,MoM,Ch.6–9,"p.23,40–43,98–106",DIRECT_SOURCE,KB-045;KB-046,105;110;111;119,PRIMARY,P8,S2.5
+N17,2,اليقظة الذهنية,Mindfulness,SKILL,SHARED,KZ,What Is Mindfulness؛ Waves,"p.15,33–34",DIRECT_SOURCE,KB-020;KB-026,72;78,PRIMARY,P10,S3.2
+N18,2,الوقفة — مساحة الاستجابة,Pause / response gap,SKILL,SHARED,KZ;NVC;Goleman,KZ Stopping، Vision، Karma؛ NVC Ch.10؛ Gol ف4,"KZ p.20–21,63–64,145؛ NVC L2836؛ Gol ص74",CROSS_BOOK,KB-022;KB-027;KB-029,74;84;96,PRIMARY,P10,S3.3
+N19,2,التنظيم الانفعالي — اعتدال لا كبت,Emotional regulation,SKILL,SHARED,Goleman;KZ;NVC;CC;MoM,"Gol ف5,ف13؛ KZ Vision؛ NVC Ch.10؛ CC Ch.6؛ MoM Ch.15","Gol ص86–98,297؛ KZ p.63؛ NVC L2728؛ CC p.96–97؛ MoM p.252",CROSS_BOOK,KB-030;KB-017;KB-048,152;153;154,PRIMARY,P12,S3.6
+N20,2,القبول ليس استسلامًا,Acceptance ≠ resignation,SKILL,SHARED,KZ;MoM,KZ This Is It؛ MoM Ch.10,KZ p.23؛ MoM p.127–129,CROSS_BOOK,KB-054,75;122,SUPPORTING,,S7.4
+N21,2,حلقات الاجترار والقلق,Rumination / worry loops,MODEL,SHARED,Goleman;MoM,"Gol ف5,ف6؛ MoM Ch.3,11,13","Gol ص91–112,123–128؛ MoM p.17,145–147,201–217",CROSS_BOOK,KB-016;KB-049;KB-050,148;155;156;104,SUPPORTING,,S0.1
+N22,2,القلق جهاز إنذار يُضبط,Anxiety as alarm to calibrate,MODEL,SHARED,MoM;Goleman,"MoM Ch.14؛ Gol ف2,ف6","MoM p.223–234؛ Gol ص35,125–126",CROSS_BOOK,KB-014,133;159,SUPPORTING,,S1.2
+N23,2,التجنب وسلوكيات الأمان,Avoidance & safety behaviors,MODEL,SHARED,MoM,Ch.14,p.225–228,DIRECT_SOURCE,KB-014,134,SUPPORTING,,
+N24,3,التعاطف,Empathy,SKILL,HEALTHY,Goleman;NVC,Gol ف7؛ NVC Ch.7–8,Gol ص143–155؛ NVC L1987–2075,CROSS_BOOK,KB-058;KB-060;KB-061,160;163;59,PRIMARY,P14,S4.2
+N25,3,أخذ المنظور والفضول,Perspective taking / curiosity,SKILL,HEALTHY,CC;MoM;Goleman,"CC Ch.6,8؛ MoM Ch.9,11,15؛ Gol ف10","CC p.112–114,143–147؛ MoM p.95,132–133,258–259؛ Gol ص216–217",CROSS_BOOK,KB-064;KB-066;KB-051,29;118;123,PRIMARY,P13,S4.1
+N26,3,الاحتياجات تحت الشعور,Needs beneath feelings,MODEL,HEALTHY,NVC;KZ;Goleman,"NVC Ch.5,10؛ KZ Cat-Food Lessons؛ Gol ف9","NVC L1215–1409,L2758؛ KZ p.159–160؛ Gol ص207",CROSS_BOOK,KB-063;KB-053,53;54;66;99,PRIMARY,P15,S4.3
+N27,3,مشاعر الآخر — التخمين التعاطفي,Other's feelings / empathic guess,SKILL,HEALTHY,NVC;Goleman,NVC Ch.7؛ Gol ف12,NVC L2047–2101؛ Gol ص266–268,CROSS_BOOK,KB-062;KB-071,60;180,PRIMARY,P15,S4.3
+N28,3,الإنصات والتوافق وإعادة الصياغة,Listening / attunement / paraphrase,SKILL,HEALTHY,Goleman;NVC;CC,"Gol ف7,ف9؛ NVC Ch.7؛ CC Ch.8","Gol ص148–151,209–211؛ NVC L2047–2131؛ CC p.148–153",CROSS_BOOK,KB-062;KB-090,162;60;173;30,SUPPORTING,,S4.4
+N29,3,الإشارات غير اللفظية,Emotional signals (nonverbal),SKILL,SHARED,Goleman;CC;KZ,Gol ف7؛ CC Ch.8؛ KZ Is There Anything Else,Gol ص144–146؛ CC p.149–150؛ KZ p.122–123,CROSS_BOOK,KB-059,161;91,SUPPORTING,,S4.4
+N30,3,الفهم ليس موافقة,Understanding ≠ agreement,MODEL,SHARED,CC;Goleman,CC Ch.8؛ Gol ف9,"CC p.153؛ Gol ص204,210",CROSS_BOOK,KB-065,31,PRIMARY,P16,S4.5
+N31,3,العدوى الانفعالية,Emotional contagion,MODEL,SHARED,Goleman;MoM,Gol ف8؛ MoM Ch.12,Gol ص168–173؛ MoM p.184–185,CROSS_BOOK,KB-069,167;130,SUPPORTING,,S6.5
+N32,3,أربع خيارات لتلقي كلام سلبي,Four options for a negative message,SKILL,HEALTHY,NVC;KZ;Goleman,NVC Ch.5؛ KZ Selfing؛ Gol ف10,NVC L1153–1167؛ KZ p.155–157؛ Gol ص220–221,CROSS_BOOK,KB-067,51;97,SUPPORTING,,S4.1
+N33,3,الشخصنة والتأويل العدائي,Personalizing / hostile attribution,MODEL,SHARED,Goleman;MoM,"Gol ف9,ف15؛ MoM Ch.15","Gol ص199–200,322–328؛ MoM p.257–259",CROSS_BOOK,KB-057,184;137,SUPPORTING,,S2.1
+N34,3,الجودو العاطفي,Emotional aikido,SKILL,HEALTHY,Goleman,ف8,ص182–185,DIRECT_SOURCE,KB-068,169,SUPPORTING,,S4.6
+N35,4,الملاحظة مقابل التفسير,Observation vs interpretation,SKILL,SHARED,MoM;CC;NVC,MoM Ch.8؛ CC Ch.6؛ NVC Ch.3,"MoM p.72–73,85؛ CC p.105–106؛ NVC L766–873",CROSS_BOOK,KB-043,116;23;48,PRIMARY,P6,S2.3
+N36,4,مكونات NVC الأربعة,NVC four components,SKILL,HEALTHY,NVC,Ch.1,L474–512,DIRECT_SOURCE,KB-072,44,PRIMARY,P19,S5.4
+N37,4,الطلب مقابل المطالبة,Requests vs demands,SKILL,SHARED,NVC;MoM,NVC Ch.6؛ MoM Ch.15,NVC L1595–1801؛ MoM p.262,CROSS_BOOK,KB-074;KB-075,56;57;58,PRIMARY,P19,S5.3
+N38,4,الشكوى لا النقد (XYZ),Complaint vs criticism,SKILL,HEALTHY,Goleman,ف9,"ص193–196,210–211",DIRECT_SOURCE,KB-076,170;173,PRIMARY,P18,S5.2
+N39,4,التوكيد — الطريق الأوسط,Assertion,SKILL,SHARED,MoM,Ch.15,p.261–263,DIRECT_SOURCE,KB-078;KB-079,139;124,PRIMARY,P26,S7.3
+N40,4,المحادثة الحاسمة,Crucial conversation,MODEL,SHARED,CC,Ch.1,p.3–5,DIRECT_SOURCE,KB-082,3;4;5,SUPPORTING,,S5.6
+N41,4,المقابلة (Contrasting),Contrasting,SKILL,HEALTHY,CC,Ch.5,p.76–81,DIRECT_SOURCE,KB-088,18,SUPPORTING,,S5.8
+N42,4,الهدف المشترك,Mutual purpose,SKILL,HEALTHY,CC,Ch.5,p.69–74,DIRECT_SOURCE,KB-087,16;17,PRIMARY,P20,S5.8
+N43,4,الأمان النفسي في الحوار,Safety in dialogue,MODEL,SHARED,CC,Ch.4–5,"p.49–51,69–74",DIRECT_SOURCE,KB-087,14,PRIMARY,P20,S5.7
+N44,4,STATE — قول الرأي الصعب,STATE my path,SKILL,SHARED,CC,Ch.7,p.124–135,DIRECT_SOURCE,KB-089,27;28,PRIMARY,P22,S5.9
+N45,4,الاعتذار والإصلاح,Apology & repair,SKILL,HEALTHY,MoM;CC;Goleman,MoM Ch.15؛ CC Ch.5؛ Gol ف9,MoM p.275–276؛ CC p.76؛ Gol ص205–210,CROSS_BOOK,KB-081,143;18,SUPPORTING,,S5.5
+N46,4,التقدير الصادق,Appreciation (not manipulation),SKILL,HEALTHY,NVC;MoM,NVC Ch.14؛ MoM Ch.12,NVC L3670–3694؛ MoM p.175–185,CROSS_BOOK,KB-080,71;130,SUPPORTING,,S8.3
+N47,5,النوبة الانفعالية (الخطف),Emotional hijacking,MODEL,SHARED,Goleman,ف2,"ص31,47–49",DIRECT_SOURCE,KB-007;KB-010,2;148,PRIMARY,P1,S1.3
+N48,5,الطوفان,Flooding,MODEL,SHARED,Goleman,ف9,ص200–204,DIRECT_SOURCE,KB-092,172,PRIMARY,P17,S5.1
+N49,5,رهان عالٍ + آراء متعارضة + مشاعر قوية,High stakes / opposing opinions / strong emotion,MODEL,SHARED,CC,Ch.1,p.3,DIRECT_SOURCE,KB-082,3,SUPPORTING,,S5.6
+N50,5,الحوار وحوض المعنى المشترك,Dialogue / pool of shared meaning,MODEL,HEALTHY,CC,Ch.2,p.20–23,DIRECT_SOURCE,KB-083,7,PRIMARY,P20,S5.7
+N51,5,الصمت والعنف,Silence vs violence,MODEL,SHARED,CC,"Ch.2,4","p.24,51–54",DIRECT_SOURCE,KB-084,8;15,PRIMARY,P20,S5.7
+N52,5,ابدأ بالقلب — واختيار المغفل,Start with heart / Sucker's choice,SKILL,SHARED,CC,Ch.3,p.29–41,DIRECT_SOURCE,KB-085;KB-086,9;10;11;12,PRIMARY,P21,S5.8
+N53,5,الوقت المستقطع للعودة,Timeout to return,SKILL,SHARED,MoM;CC;NVC,"MoM Ch.10,15؛ CC Ch.11؛ NVC Ch.7","MoM p.121–124,261؛ CC p.206–207؛ NVC L2177–2199",CROSS_BOOK,KB-092,121;138;40,PRIMARY,P17,S5.1
+N54,5,استراحة الـ20 دقيقة (فسيولوجية),20-minute physiological break,SKILL,SHARED,Goleman,ف9,ص207–208,DIRECT_SOURCE,KB-092,172,PRIMARY,P17,S5.1
+N55,5,حل النزاع بالاحتياجات,Needs-based conflict resolution,SKILL,HEALTHY,NVC,Ch.11,L3044–3192,DIRECT_SOURCE,KB-096,67,SUPPORTING,,S5.5
+N56,5,أسلحة جوتمان الأربعة,Criticism / contempt / defensiveness / stonewalling,MODEL,SHARED,Goleman,ف9,ص193–197,DIRECT_SOURCE,KB-093,170,PRIMARY,P18,S5.2
+N57,5,المثير لا السبب,Stimulus vs cause,MODEL,SHARED,NVC;CC;KZ,"NVC Ch.5,10؛ CC Ch.6؛ KZ Cat-Food Lessons","NVC L1149,L2732؛ CC p.94–95؛ KZ p.160",CROSS_BOOK,KB-039,19;50,PRIMARY,P5,S2.2
+N60,6,«Dark EQ» — إطار دفاعي من تصميم المشروع,Dark EQ (project defensive frame),FRAME,DEFENSIVE,Project,—,—,INTEGRATED_SYNTHESIS,KB-097,,PRIMARY,P23,S6.1
+N61,6,ازدواجية استخدام المهارة الاجتماعية,Dual use of social-emotional skill,MODEL,DEFENSIVE,Goleman,"ف3,ف8","ص65–68,165–167",DIRECT_SOURCE,KB-097,150;166,PRIMARY,P23,S6.1
+N62,6,الانفعال المصطنع كرافعة,Performed emotion as leverage,PATTERN,DEFENSIVE,Goleman,"ف5,ف8","ص89,168",DIRECT_SOURCE,KB-098,166,SUPPORTING,,S6.6
+N63,6,التخويف المحسوب,Calculated intimidation,PATTERN,DEFENSIVE,Goleman,ف7,ص159–161,DIRECT_SOURCE,KB-099,165,PRIMARY,P24,S6.3
+N64,6,السلطة المرهبة تُسكت الناس,Intimidating authority silences,PATTERN,DEFENSIVE,Goleman;CC;NVC,"Gol ف10؛ CC Ch.2,11؛ NVC Ch.8","Gol ص213–215؛ CC p.22,198–200؛ NVC L2365",CROSS_BOOK,KB-107,175;37;62,PRIMARY,P24,S6.4
+N65,6,الذنب كأداة ضغط,Guilt as lever,PATTERN,DEFENSIVE,NVC;MoM,"NVC Ch.5,6,10؛ MoM Ch.15","NVC L1209,L1761–1797,L2740–2744؛ MoM p.262",CROSS_BOOK,KB-103,52;57;140,PRIMARY,P24,S6.6
+N66,6,سحب الاهتمام كتهديد,Withdrawal of care as threat,PATTERN,DEFENSIVE,NVC;CC;Goleman,NVC Ch.12؛ CC Ch.5؛ Gol ف9,NVC L3400؛ CC p.88–90؛ Gol ص196–197,CROSS_BOOK,KB-104,69,PRIMARY,P24,S6.6
+N67,6,المديح المتلاعب,Manipulative praise,PATTERN,DEFENSIVE,NVC,Ch.14,L3670–3680,DIRECT_SOURCE,KB-105,71,SUPPORTING,,S6.6
+N68,6,لغة السلطة والغطاء الأخلاقي/الديني,Authority language & moral cloak,PATTERN,DEFENSIVE,NVC;KZ,NVC Ch.2؛ KZ Is Mindfulness Spiritual,NVC L666–742؛ KZ p.172,CROSS_BOOK,KB-106;KB-110,46;47;102,SUPPORTING,,S6.3
+N69,6,التلون الاجتماعي — القول غير الفعل,Social chameleon (say ≠ do),PATTERN,DEFENSIVE,Goleman,ف8,ص175–177,DIRECT_SOURCE,KB-101,168,SUPPORTING,,S6.5
+N70,6,خلق الاعتمادية,Dependency creation,PATTERN,DEFENSIVE,KZ;MoM,KZ Generosity؛ MoM Ch.12,"KZ p.54–55,128؛ MoM p.172–173",CROSS_BOOK,KB-111,82;93;129,SUPPORTING,,S6.5
+N71,6,صمت الشهود وإيقاع الجماعة,Silent bystanders & group tempo,PATTERN,DEFENSIVE,Goleman,"ف7,ف8,ف10","ص156–157,170–173,225–227",DIRECT_SOURCE,KB-108;KB-102,177;167,SUPPORTING,,S6.4
+N72,6,العقاب حسب المزاج,Mood-based punishment (unpredictability),PATTERN,DEFENSIVE,Goleman;MoM,Gol ف12؛ MoM Ch.14,Gol ص274–275؛ MoM p.233,CROSS_BOOK,KB-109,181,LIBRARY,,
+N73,6,ألعاب الكلام,Word games,PATTERN,DEFENSIVE,CC;NVC,"CC Ch.7,11؛ NVC Ch.6","CC p.136–138,211–212؛ NVC L1619",CROSS_BOOK,KB-127,42,LIBRARY,,
+N74,6,إسكات الضمير بالتبرير,Silencing empathy by justification,PATTERN,DEFENSIVE,Goleman;NVC;CC,"Gol ف7,ف15؛ NVC Ch.10؛ CC Ch.6","Gol ص157–159,326؛ NVC L2810؛ CC p.109",CROSS_BOOK,KB-100,164,SUPPORTING,,S6.3
+N75,6,الامتثال تحت الضغط ليس موافقة,Compliance under pressure ≠ agreement,MODEL,DEFENSIVE,CC;NVC,"CC Ch.2,5؛ NVC Ch.2,12","CC p.23,65–66,83؛ NVC L640–642,L3406",CROSS_BOOK,KB-124,7;8,SUPPORTING,,S6.3
+N76,6,العجز وفقدان السيطرة,Helplessness / uncontrollability,MODEL,DEFENSIVE,Goleman;MoM,Gol ف13؛ MoM Ch.15,Gol ص283–284؛ MoM p.256,CROSS_BOOK,KB-120;KB-116,182;136,SUPPORTING,,S6.4
+N77,6,النمط مقابل الواقعة,Pattern vs instance,DEF_SKILL,DEFENSIVE,CC;MoM,CC Ch.11؛ MoM Ch.15,CC p.205–208؛ MoM p.259,CROSS_BOOK,KB-094,39;42,PRIMARY,P25,S6.5
+N78,6,معايرة الرادار — لا سذاجة ولا بارانويا,Radar calibration,DEF_SKILL,DEFENSIVE,MoM;NVC;KZ;CC,"MoM Ch.6,12,14؛ NVC Ch.4؛ KZ Trust، Anger؛ CC Ch.6","MoM p.47–49,155,158,230؛ NVC L1047–1063؛ KZ p.52,158؛ CC p.109",CROSS_BOOK,KB-113;KB-114,127;128;49;98;81,PRIMARY,P25,S7.1
+N79,6,التوثيق,Documentation,DEF_SKILL,DEFENSIVE,CC,Ch.9,p.174–177,DIRECT_SOURCE,KB-091,34,PRIMARY,P27,S7.5
+N80,6,الحدود — ليست عدوانًا,Boundaries (not aggression),DEF_SKILL,DEFENSIVE,NVC;KZ;CC;MoM,"NVC Ch.5,12؛ KZ Non-Judging؛ CC Ch.11؛ MoM Ch.15","NVC L1441–1483,L3424؛ KZ p.51,58–59؛ CC p.208–209؛ MoM p.261–263",CROSS_BOOK,KB-122;KB-095,55;80;41,PRIMARY,P26,S7.3
+N81,6,القوة الحامية واختبار النية,Protective force & two-question test,DEF_SKILL,DEFENSIVE,NVC,Ch.12,L3370–3424,DIRECT_SOURCE,KB-118,68,SUPPORTING,,S7.6
+N82,6,الحماية: دعم، تصعيد، استعادة السيطرة، مسافة,Protection: support / escalation / control / distance,DEF_SKILL,DEFENSIVE,Goleman;MoM;CC,"Gol ف13,ف15؛ MoM Ch.10,13,15؛ CC Ch.11","Gol ص283–284,291–293,351–353؛ MoM p.121,201,263؛ CC p.194–195",CROSS_BOOK,KB-120;KB-121;KB-125;KB-117,182;183;131;186;36;141,PRIMARY,P27,S7.5
+N83,6,حدود إعادة التأطير — الإساءة لا تُعالج بالتفكير,Limits of reframing,MODEL,DEFENSIVE,MoM,"Ch.3,9","p.24,112–113",DIRECT_SOURCE,KB-115,106;120,PRIMARY,P27,S7.2
+N84,6,الغضب الصحي كإشارة — وغيابه مشكلة,Healthy anger as signal,MODEL,DEFENSIVE,MoM;Goleman,MoM Ch.15؛ Gol ف7,MoM p.256–258؛ Gol ص156,CROSS_BOOK,KB-116,136,SUPPORTING,,S7.2
+N85,6,لوم الذات وفطيرة المسؤولية,Self-blame & responsibility pie,DEF_SKILL,DEFENSIVE,MoM;Goleman,"MoM Ch.8,12,15؛ Gol ف15","MoM p.75,155,272–274؛ Gol ص353",CROSS_BOOK,KB-119,142,SUPPORTING,,S7.2
+N86,6,صف السلوك ولا تشخّص,"Describe, don't diagnose",SKILL,SHARED,NVC;Goleman;MoM,"NVC Ch.2,13؛ Gol ف7؛ MoM Ch.13","NVC L628,L3564–3598؛ Gol ص161؛ MoM p.190",CROSS_BOOK,KB-128,70,SUPPORTING,,S6.2
+N87,6,الإفصاح الانتقائي الآمن,Safe selective disclosure,DEF_SKILL,DEFENSIVE,MoM,"Ch.10,15","p.120–121,276–277",DIRECT_SOURCE,KB-126,144,SUPPORTING,,S7.5
+N88,6,لا تدخل لعبة الانفعال,Don't enter the emotional game,DEF_SKILL,DEFENSIVE,KZ;Goleman,KZ Parenting Two، Ahimsa، Patience؛ Gol ف8,"KZ p.45,143–144,168؛ Gol ص167",CROSS_BOOK,KB-129,101;95,SUPPORTING,,S7.4
+N89,6,سلطتك الداخلية,Your own authority,DEF_SKILL,DEFENSIVE,KZ,Your Own Authority؛ Dignity,"p.79,124–125",DIRECT_SOURCE,KB-112,92;86,SUPPORTING,,S7.4
+N90,6,الاستقامة العاطفية — الأمانة والتكامل,Emotional integrity,MODEL,HEALTHY,Goleman,ف8,ص175–177,DIRECT_SOURCE,KB-101,168,SUPPORTING,,S7.6
+N91,6,درع Dark EQ,Dark EQ Shield,FRAME,DEFENSIVE,Brief + sources,—,—,USER_FRAMEWORK,KB-132,,SUPPORTING,,S7.7
+N92,6,حالة عتمان (شخصية درامية),Attaman — fictional case,CASE,DEFENSIVE,FILM,—,"FILM §3,§6",FICTIONAL_CASE_STUDY,KB-131,189,SUPPORTING,,S6.3
+N93,7,NOTICE — لاحظ,NOTICE,FRAME,FRAMEWORK,Project,—,—,USER_FRAMEWORK,KB-142,,PRIMARY,P28,S8.2
+N94,7,NAME — سمِّ,NAME,FRAME,FRAMEWORK,Project,—,—,USER_FRAMEWORK,KB-142,,PRIMARY,P28,S8.2
+N95,7,PAUSE — توقف,PAUSE,FRAME,FRAMEWORK,Project,—,—,USER_FRAMEWORK,KB-142,,PRIMARY,P28,S8.2
+N96,7,UNDERSTAND — افهم قصتك,UNDERSTAND,FRAME,FRAMEWORK,Project,—,—,USER_FRAMEWORK,KB-142,,PRIMARY,P28,S8.2
+N97,7,REGULATE — نظّم,REGULATE,FRAME,FRAMEWORK,Project,—,—,USER_FRAMEWORK,KB-142,,PRIMARY,P28,S8.2
+N98,7,EMPATHIZE — تعاطف,EMPATHIZE,FRAME,FRAMEWORK,Project,—,—,USER_FRAMEWORK,KB-142,,PRIMARY,P28,S8.2
+N99,7,COMMUNICATE — تواصل,COMMUNICATE,FRAME,FRAMEWORK,Project,—,—,USER_FRAMEWORK,KB-142,,PRIMARY,P28,S8.2
+N100,7,NAVIGATE — أدِر,NAVIGATE,FRAME,FRAMEWORK,Project,—,—,USER_FRAMEWORK,KB-142,,PRIMARY,P28,S8.2
+N101,7,REFLECT — راجع,REFLECT,FRAME,FRAMEWORK,Project,—,—,USER_FRAMEWORK,KB-142,,PRIMARY,P28,S8.2
+N102,7,الممارسة المتدرجة — مراحل المهارة,Graduated practice / skill stages,SKILL,SHARED,MoM;Goleman;KZ;CC,"MoM Ch.16؛ Gol ف9,ف16؛ KZ Posture، How Long؛ CC Ch.12","MoM p.112,280–289؛ Gol ص211–212,357–359؛ KZ p.81,85؛ CC p.215–226",CROSS_BOOK,KB-133;KB-134;KB-034,145;43;174,PRIMARY,P28,S8.4
+N103,7,خطة الأيام السبعة,7-day plan,FRAME,FRAMEWORK,Brief + sources,—,—,USER_FRAMEWORK,KB-142,,SUPPORTING,,S8.4
+N104,7,مسار الذكاء العاطفي الصحي,Healthy EQ path,FRAME,HEALTHY,Project,—,—,INTEGRATED_SYNTHESIS,KB-142;KB-097,,SUPPORTING,,S6.1
+N105,7,المسار الدفاعي,Defensive path,FRAME,DEFENSIVE,Project,—,—,INTEGRATED_SYNTHESIS,KB-097;KB-132,,SUPPORTING,,S7.7
