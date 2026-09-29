@@ -9,8 +9,8 @@
 | 2 KNOWLEDGE EXTRACTION | ✅ مكتمل — 142 مدخلًا بالحقول العشرة، مرتبة على المراحل الثماني | `01_KNOWLEDGE_BASE/02_KNOWLEDGE_BASE.md` · `knowledge_base.csv` |
 | 3 KNOWLEDGE GRAPH | ✅ مكتمل — خريطتان: معرفة (103 عقدة، 193 علاقة مصنفة) + قصة (8 فصول، 28 مفهومًا أساسيًا) | `02_KNOWLEDGE_GRAPH/` (01–09 + `_build/`) |
 | 4 INTEGRATED FRAMEWORK | ✅ مكتمل — السلسلة مكتشفة من القصة: **10 حلقات، ~126 دقيقة** (8–17د)، 66 مشهدًا | `03_INTEGRATED_FRAMEWORK/` (01–12 + `_build/`) |
-| 5 MASTERCLASS STRUCTURE | ▶️ التالي (مخطط تفصيلي لكل حلقة) | — |
-| 6 FULL SCRIPT | ⏸ | — |
+| 5 MASTERCLASS STRUCTURE | ✅ مكتمل — مخطط بالنبضات لكل حلقة (66/66 مشهدًا، التوقيت مطابق) + مخطط رئيسي + حواجز دقة | `04_MASTER_OUTLINE/` (00، 05–07، E01–E10 + `_build/`) |
+| 6 FULL SCRIPT | ▶️ التالي — بانتظار التعليمات (العوائق: التحقق من الفيلم F07–F18، والموارد المصرية) | — |
 | 7 PRESENTATION | ⏸ | — |
 | 8 DARK EQ MODULE | ⏸ الأساس المصدري جاهز؛ حوار الفيلم يُتحقق بالمشاهدة | — |
 | 9 ANIMATION | ⏸ | — |
