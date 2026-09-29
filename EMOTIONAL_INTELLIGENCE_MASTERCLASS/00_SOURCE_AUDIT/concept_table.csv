@@ -1,6 +1,6 @@
 ﻿#,CONCEPT,BOOK,CHAPTER,PAGE,ROLE IN MASTERCLASS
-1,Emotional Intelligence (definition),Goleman,—,—,❌ BLOCKED — عمود Stage 1
-2,Emotional brain / hijack / amygdala,Goleman,—,—,❌ BLOCKED — Stage 1 + Animation 1–2
+1,Emotional Intelligence (definition; Salovey's 5 domains),Goleman,ف3,ص64–66,Stage 1 — التعريف
+2,"Emotional brain / النوبات الانفعالية / amygdala ""فريق الإنذار"" / LeDoux shortcut",Goleman,ف1–2,ص17–51,Stage 1 + Animation 1–2
 3,Crucial Conversation definition,CC,Ch.1,p.3,Stage 6 — افتتاح القسم
 4,"""We're designed wrong"" (adrenaline, blood to muscles)",CC,Ch.1,p.4,Stage 1 تشبيه داعم (حتى وصول Goleman)
 5,Worst behavior when it matters most,CC,Ch.1,p.4,Hook
@@ -101,14 +101,90 @@
 100,Children as possessions; dominating aggression,KZ,Parenting Two,p.167,Stage 7 (أسرة)
 101,"""Other people's minds waving… doesn't mean yours""",KZ,Parenting Two,p.168,"Shield ""لا تدخل لعبة الانفعال"""
 102,Cloak of spirituality to harm others,KZ,Is Mindfulness Spiritual?,p.172,Stage 7 — الخطاب الأخلاقي/الديني عند عتمان
-103,Five-part model,MoM,Ch.2–3,L3631,Stage 3 — Animation 3
-104,Thought–mood / behavior / physical links,MoM,Ch.3,L377–405,Stage 3
-105,Identify & rate moods (0–100),MoM,Ch.4,L441–492,Exercise 2
-106,Automatic thoughts; hot thought,MoM,Ch.7,L581–673,Exercise 3
-107,Where's the evidence? (Vic),MoM,Ch.8,L680–730,الوقفة + الدليل
-108,Balanced thinking (Akiko),MoM,Ch.9–10,L737–856,Exercise 4 Reframe — Animation 5
-109,"Underlying assumptions ""If…then""",MoM,Ch.11,L863–912,"CASE 2 + Stage 7 (""لو رفضت يبقى أنا وحش"")"
-110,Core beliefs,MoM,Ch.12,L919–952,عمق (اختياري)
-111,Anger/guilt/shame; forgiveness ≠ approval,MoM,Ch.15؛ WS 15.4,L1203–1257؛ L2450–2487,Stage 7 GUILT
-112,Skill stages; relapse = opportunity,MoM,Ch.16,L1302–1397,خطة 7 أيام
-113,Thought Record (7 columns),MoM,WS 9.2,L1415–1471؛ L830,Stage 3 أداة رئيسية
+103,"Five-part model (environment, thoughts, moods, behaviors, physical)",MoM,Ch.2,p.7–8,Stage 1–2 — Animation
+104,Thought–mood link: Alex at the party (rude/boring/shy),MoM,Ch.3,p.16–17,Stage 3 — Exercise
+105,Positive thinking is not the solution,MoM,Ch.3؛ Ch.9,p.23؛ p.99,Stage 3 — رسالة جوهرية
+106,Abuse is not solved by changing thoughts,MoM,Ch.3,p.24,Stage 7 — حد أخلاقي
+107,Mood list; mood = one word; sentence = thought,MoM,Ch.4,p.25–27,Stage 3 NAME
+108,Body as clue to mood,MoM,Ch.4,p.26,Stage 2
+109,Rate moods 0–100,MoM,Ch.4,p.29–30,Exercise
+110,Seven-column Thought Record,MoM,Ch.6–9,p.40–43,أداة رئيسية Stage 3
+111,Situation / mood / thought sorting exercise,MoM,Ch.6,p.47–49,Exercise تفاعلي
+112,Awareness is the first step; if thought is accurate → talk directly,MoM,Ch.7,p.52,Stage 2 → 5 جسر
+113,Questions to identify automatic thoughts (per mood),MoM,Ch.7,p.54–56,Stage 3
+114,Hot thoughts,MoM,Ch.7,p.61–63,Stage 3
+115,"Vic & Judy: stop, look, relisten (full arc)",MoM,Ch.8–9,p.69–98,CASE رئيسية
+116,Facts vs interpretations,MoM,Ch.8,p.72–73,Stage 3/5 — تقاطع ثلاثي مع NVC وCC
+117,Questions for evidence that does not support,MoM,Ch.8,p.75,Stage 3
+118,Akiko & Yuki: new information shifts 180°,MoM,Ch.9,p.95,Stage 3/4 — قصة
+119,"Balanced thought with ""and""; goal is not to eliminate emotions",MoM,Ch.9,p.98–106,Stage 3
+120,"Hot thought may be accurate (""My boss is abusing me"")",MoM,Ch.9,p.112–113,Stage 7
+121,Action Plan; Vic's anger thermometer 0–10 & break protocol,MoM,Ch.10,p.119–124,Stage 5–6 أداة
+122,"Acceptance; ""I can see my thoughts and not be my thoughts""",MoM,Ch.10,p.126–129,Stage 2 — جسر KZ
+123,"Underlying assumptions ""If… then""; Shauntelle & Trey",MoM,Ch.11,p.132–134,Stage 4–5 CASE
+124,"""If you care, then you will know what I want""",MoM,Ch.11؛ Ch.15,p.134؛ p.263,Stage 5
+125,Behavioral experiments (3 types),MoM,Ch.11,p.137–150,Stage 8
+126,Core beliefs; downward arrow,MoM,Ch.12,p.152–162,عمق (اختياري)
+127,Learned hypervigilance; calibrate don't delete,MoM,Ch.12؛ Ch.14,p.155؛ p.230,Stage 7 — معايرة الرادار
+128,Recognizing someone's negative intention is healthy,MoM,Ch.12,p.158,Stage 7 — تبرير الموديول
+129,"Carla: people-pleasing, assertion experiments, family pushback",MoM,Ch.12,p.172–173,Stage 7 CASE
+130,Gratitude journal; expressing gratitude; acts of kindness,MoM,Ch.12,p.175–185,Stage 8 — خطة 7 أيام
+131,Help programs for abuse victims,MoM,Ch.13,p.201,Stage 7 — إحالة
+132,Motivation follows action; capturing enjoyment,MoM,Ch.13,p.216–217,Stage 8
+133,Fight/flight/freeze; anxiety as alarm to fine-tune,MoM,Ch.14,p.223–234,Stage 1 — جسر Goleman
+134,Avoidance & safety behaviors vs coping,MoM,Ch.14,p.225–228,Stage 6–7
+135,Mindfulness & acceptance for anxiety; balanced breathing 4-4,MoM,Ch.14,p.241–243,Stage 2 PAUSE أداة
+136,Absence of anger in face of abuse is also a problem,MoM,Ch.15,p.256,Stage 7 — مفتاح حالة الفيلم
+137,Personalizing; putting people in boxes,MoM,Ch.15,p.258–259,Stage 4؛ Stage 7 (ONE INCIDENT vs PATTERN)
+138,Early warning signs; timeouts,MoM,Ch.15,p.260–261,Stage 2/6
+139,Assertion: aggressive/assertive/passive; 4 strategies,MoM,Ch.15,p.261–263,Stage 5 + Shield
+140,Acknowledge truth + stand up for rights (vs guilt-trip),MoM,Ch.15,p.262,Shield — ضد الذنب
+141,Not forgiving ongoing abuse; not to blame; distance,MoM,Ch.15,p.263,Stage 7 — حد أخلاقي
+142,Responsibility pie,MoM,Ch.15,p.272–274,Stage 7 (لوم الذات)
+143,Reparations / apology template,MoM,Ch.15,p.275–276,Stage 6 REPAIR
+144,Breaking the silence of shame,MoM,Ch.15,p.276–277,Stage 7
+145,Three stages of skill; relapse plan,MoM,Ch.16,p.280–288,Stage 8 — خطة 7 أيام
+146,"Aristotle's challenge: right person, degree, time, purpose, way",Goleman,مقدمة,ص7–15,Hook/تعريف
+147,Two minds (thinking/feeling),Goleman,ف1,ص17–30,Stage 1
+148,Working memory frozen by emotion,Goleman,ف2؛ ف6,ص40–51؛ ص118,Stage 1 — لماذا لا نفكر
+149,"Prefrontal ""off switch""; obsolete neural alarms",Goleman,ف2,ص31–51,Stage 1–2
+150,IQ ≈ 20% of success; emotional intelligence domains,Goleman,ف3,ص53–66,Stage 1
+151,"Self-awareness ""I feel angry""; Mayer's 3 styles",Goleman,ف4,ص73–86,Stage 2 NOTICE
+152,Temperance not suppression,Goleman,ف5,ص86–87,Stage 2
+153,"We can't control when, but can control how long",Goleman,ف5؛ ف13,ص88؛ ص297,Stage 2 — تعريف التقدم
+154,Anger builds on anger; reframing early; cooling off; venting myth,Goleman,ف5,ص90–98,Stage 3 + Stage 6
+155,Worry as rehearsal / magic charm; challenge worry thoughts,Goleman,ف5,ص98–104,Stage 3
+156,Rumination and sadness; small victories; helping others,Goleman,ف5,ص105–112,Stage 8
+157,"Repressors: calm face, aroused body",Goleman,ف5,ص112–115,Stage 2
+158,Marshmallow / impulse control,Goleman,ف6,ص120–123,Stage 2 (مع تحفظ)
+159,Inverted-U anxiety & performance; hope; optimism (Seligman); flow,Goleman,ف6,ص124–141,Stage 8
+160,Empathy built on self-awareness,Goleman,ف7,ص143,Stage 4 — مبرر الترتيب
+161,"Nonverbal: truth in how, not what",Goleman,ف7,ص144–146,Stage 4؛ Shield
+162,Attunement (Stern) vs imitation,Goleman,ف7,ص148–151,Stage 4–5
+163,Empathy requires calm (Levenson),Goleman,ف7,ص154–155,Stage 4
+164,Silencing empathy by self-justification,Goleman,ف7,ص157–159,Stage 7
+165,"Calculated violence for control (""calmer as more aggressive"")",Goleman,ف7,ص160–161,Stage 7 — عتمان
+166,Same skills used to hurt; display rules; exaggerated display,Goleman,ف8,ص167–168,Stage 7 — الاستخدام المزدوج
+167,"Emotional contagion; ""in the palm of his hand""",Goleman,ف8,ص168–173,Stage 5؛ Stage 7
+168,Social chameleons; integrity as the line,Goleman,ف8,ص175–177,Stage 7 — الحد الأخلاقي
+169,Emotional aikido — Tokyo train,Goleman,ف8,ص182–185,Stage 4 CASE
+170,Gottman: criticism vs complaint; contempt; defensiveness; stonewalling,Goleman,ف9,ص193–197,Stage 5–6
+171,"Toxic thoughts: ""innocent victim"" / ""righteous anger"" (Beck)",Goleman,ف9,ص197–199,Stage 3 — جسر MoM
+172,Flooding (+10 bpm); 20-minute break,Goleman,ف9,ص200–208,Stage 6 أداة
+173,Non-defensive listening; mirroring; XYZ complaint (Ginott),Goleman,ف9,ص209–211,Stage 5
+174,Practice in low-stakes moments,Goleman,ف9,ص211–212,Stage 8
+175,Intimidating boss silences crew (McBurnett),Goleman,ف10,ص213–214,Stage 7 — POWER
+176,"Artful critique (Levinson): specific, solution, face-to-face, sensitive",Goleman,ف10,ص219–221,Stage 5
+177,Silent bystanders legitimize; naming the behavior curbs it,Goleman,ف10,ص225–227,Stage 7 — أهل القرية
+178,Anger & health; hostility can change,Goleman,ف11,ص243–246,Stage 1 (دافع)
+179,Social isolation vs support; writing (Pennebaker),Goleman,ف11,ص253–257,Stage 8
+180,Parenting styles; emotion coaching,Goleman,ف12,ص266–268,Stage 4 (أسرة)
+181,Punishment by parent's mood; cycle of aggression,Goleman,ف12,ص274–275,Stage 7
+182,Uncontrollability → trauma; regaining control protects,Goleman,ف13,ص283–284,Stage 7 Shield
+183,Irene: support network + police; Herman's 3 stages,Goleman,ف13,ص291–293,Stage 7 Shield
+184,Hostile attribution bias; Lochman's anger program,Goleman,ف15,ص322–328,Stage 3/7
+185,Naming feelings; eating disorders & undifferentiated emotion,Goleman,ف15,ص337–341,Stage 3 NAME — دليل
+186,Information alone does not protect; skills + boundaries + reporting,Goleman,ف15,ص351–353,Stage 7 Shield — أساس
+187,Active ingredients list (W.T. Grant),Goleman,ف15,ص353–355,مخرجات التعلم
+188,"""If not now, when?""",Goleman,كلمة أخيرة,ص361–362,ختام
+189,"Film: land fraud; forced divorce by threat; sheikh's verse; ""البلد بلدنا والدفاتر دفاترنا""",FILM,—,—,Dark EQ CASE [EXTERNAL: WEB]
