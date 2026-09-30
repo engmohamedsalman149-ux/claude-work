@@ -1,0 +1,150 @@
+<title>خريطة «الذكاء العاطفي»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: radial map of the book (root → parts → chapters) beside a reading panel for the selected chapter */
+:root{
+  --bg:#f6f3ec; --surface:#fffdf8; --ink:#23201a; --dim:#6f685c; --line:#dcd4c3;
+  --gol:#b3862a; --mom:#2f8a7e; --nvc:#c4553d; --cc:#3a64a8; --kz:#7a5aa6;
+  --f-display:"Reem Kufi","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#15130f; --surface:#1e1b16; --ink:#ece6d8; --dim:#a39a88; --line:#3a352b;
+  --gol:#dcae4c; --mom:#5cc0b1; --nvc:#e58368; --cc:#7ea3e3; --kz:#b096dc; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15130f; --surface:#1e1b16; --ink:#ece6d8; --dim:#a39a88; --line:#3a352b;
+  --gol:#dcae4c; --mom:#5cc0b1; --nvc:#e58368; --cc:#7ea3e3; --kz:#b096dc; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.7}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:16px;padding-block:22px 44px;display:grid;gap:18px}
+header{display:grid;gap:4px}
+h1{font-family:var(--f-display);font-size:clamp(24px,3.4vw,36px);margin:0;font-weight:700;text-wrap:balance}
+.by{color:var(--dim);font-size:13px;margin:0}
+.stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--dim);margin:0;padding:0;list-style:none}
+.stats b{color:var(--ink);font-variant-numeric:tabular-nums}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters span{font-size:13px;color:var(--dim)}
+.fbtn{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:20px;padding:4px 12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.fbtn i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.fbtn[aria-pressed="true"]{border-color:var(--ink);font-weight:600}
+.fbtn:focus-visible{outline:2px solid var(--gol);outline-offset:2px}
+.grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.mapbox{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px}
+svg{width:100%;height:auto;display:block}
+svg text{font-family:var(--f-body);fill:var(--ink);direction:ltr;unicode-bidi:plaintext}
+.edge{stroke:var(--line);fill:none;stroke-width:1.4}
+.pnode{fill:var(--surface);stroke:var(--gol);stroke-width:1.6}
+.plabel{font-family:var(--f-display);font-size:17px;font-weight:500}
+.cnode{cursor:pointer}
+.cnode circle.hit{fill:transparent}
+.cnode circle.dot{fill:var(--surface);stroke:var(--ink);stroke-width:1.4}
+.cnode.sel circle.dot{fill:var(--gol);stroke:var(--gol)}
+.cnode.dim{opacity:.22}
+.cnode text{font-size:16px}
+.cnode:focus-visible circle.dot{stroke:var(--gol);stroke-width:3}
+.root circle{fill:var(--gol)}
+.root text{font-family:var(--f-display);font-size:17px;font-weight:700;fill:var(--bg)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px 20px;display:grid;gap:14px;min-width:0}
+.panel .part{font-size:12px;color:var(--gol);letter-spacing:.02em;margin:0}
+.panel h2{font-family:var(--f-display);font-weight:700;font-size:22px;margin:0;text-wrap:balance}
+.panel h2 small{font-family:var(--f-mono);font-size:12px;color:var(--dim);font-weight:500;margin-inline-start:8px}
+.panel h3{font-size:13px;color:var(--dim);font-weight:600;margin:0 0 6px}
+.ideas{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.ideas li{display:flex;gap:10px;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.ideas li span:last-child{font-family:var(--f-mono);font-size:12px;color:var(--gol);white-space:nowrap}
+.links{display:grid;gap:8px}
+.lk{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:start;padding:8px 10px;border-radius:6px;background:color-mix(in srgb,var(--c) 9%,transparent);border-inline-start:3px solid var(--c)}
+.lk b{font-size:12px;color:var(--c);font-family:var(--f-mono)}
+.lk .meta{grid-column:2;font-size:12px;color:var(--dim)}
+.eps{display:flex;flex-wrap:wrap;gap:6px}
+.eps span{font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);border-radius:4px;padding:1px 7px}
+.note{font-size:13px;color:var(--dim);margin:0}
+.empty{color:var(--dim);font-size:13px;margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--dim)}
+</style>
+
+<div class="wrap" dir="rtl">
+  <header>
+    <h1 id="h1">خريطة كتاب «الذكاء العاطفي»</h1>
+    <p class="by" id="by"></p>
+    <ul class="stats" id="stats"></ul>
+  </header>
+  <div class="filters" id="filters"><span>ورّيني الفصول المتربطة بـ:</span></div>
+  <div class="grid">
+    <div class="mapbox"><svg id="map" viewBox="0 0 900 900" role="img" aria-label="خريطة ذهنية لأقسام وفصول الكتاب"></svg></div>
+    <section class="panel" id="panel" aria-live="polite"></section>
+  </div>
+  <p class="legend">اضغط على أي فصل على الخريطة. الألوان: <span style="color:var(--mom)">● Mind Over Mood</span> <span style="color:var(--nvc)">● NVC</span> <span style="color:var(--cc)">● Crucial Conversations</span> <span style="color:var(--kz)">● Kabat-Zinn</span></p>
+</div>
+
+<script>
+const D = /*__DATA__*/null;
+const COL = {MoM:"var(--mom)", NVC:"var(--nvc)", CC:"var(--cc)", KZ:"var(--kz)"};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $ = id => document.getElementById(id);
+let sel = "C4", filter = null;
+
+$("by").textContent = D.book.author + " · " + D.book.edition;
+$("stats").innerHTML = [["أقسام", D.parts.length], ["فصول", D.stats.chapters], ["أفكار بالصفحة", D.stats.ideas], ["روابط بالكتب التانية", D.stats.links], ["فصول مستخدمة في السلسلة", D.stats.used + " من " + D.stats.chapters]]
+  .map(([k,v]) => `<li>${k}: <b>${v}</b></li>`).join("");
+$("filters").insertAdjacentHTML("beforeend", Object.keys(D.books).map(k => `<button class="fbtn" type="button" data-b="${k}" aria-pressed="false"><i style="background:${COL[k]}"></i>${k}</button>`).join(""));
+$("filters").addEventListener("click", e => {
+  const b = e.target.closest(".fbtn"); if (!b) return;
+  filter = filter === b.dataset.b ? null : b.dataset.b;
+  document.querySelectorAll(".fbtn").forEach(x => x.setAttribute("aria-pressed", x.dataset.b === filter));
+  draw();
+});
+
+const chapters = D.parts.flatMap(p => p.chapters.map(c => ({...c, part:p})));
+const N = chapters.length, C = 450, RP = 165, RC = 285;
+const solo = p => p.chapters.length === 1;
+chapters.forEach((c,i) => { c.ang = -Math.PI/2 + (i + .5) / N * 2 * Math.PI; });
+D.parts.forEach(p => { const cs = chapters.filter(c => c.part === p); p.ang = cs.reduce((s,c)=>s+c.ang,0)/cs.length; });
+const xy = (r,a) => [C + r*Math.cos(a), C + r*Math.sin(a)];
+
+function wrapLabel(t, n){ const w = t.split(" "), out=[]; let l=""; for (const x of w){ if ((l+" "+x).trim().length > n){ out.push(l.trim()); l=x; } else l += " "+x; } out.push(l.trim()); return out; }
+
+function draw(){
+  let s = "";
+  D.parts.filter(p => !solo(p)).forEach(p => { const [px,py] = xy(RP,p.ang); s += `<path class="edge" d="M${C},${C} Q${(C+px)/2},${(C+py)/2} ${px},${py}"/>`; });
+  chapters.forEach(c => { const [px,py] = solo(c.part) ? [C,C] : xy(RP,c.part.ang), [cx,cy] = xy(RC,c.ang); s += `<path class="edge" d="M${px},${py} L${cx},${cy}"/>`; });
+  D.parts.filter(p => !solo(p)).forEach(p => {
+    const [x,y] = xy(RP,p.ang), lines = wrapLabel(p.name.replace(/^القسم [^:]+: /,""), 14);
+    const w = 150, h = 22 + lines.length*20;
+    s += `<rect class="pnode" x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="8"/>`;
+    lines.forEach((l,i) => s += `<text class="plabel" x="${x}" y="${y - (lines.length-1)*10 + i*20 + 6}" text-anchor="middle">${esc(l)}</text>`);
+  });
+  chapters.forEach(c => {
+    const [x,y] = xy(RC,c.ang), right = Math.cos(c.ang) >= 0;
+    const books = [...new Set(c.links.map(l => l[0]))];
+    const dim = filter && !books.includes(filter);
+    const lx = x + (right ? 16 : -16), anchor = right ? "start" : "end";
+    const lines = wrapLabel(c.name.replace(/^ف\d+ /,"").replace(/ \(.*\)$/,""), 13);
+    let t = lines.map((l,i) => `<text x="${lx}" y="${y + 5 + (i - (lines.length-1)/2)*18}" text-anchor="${anchor}">${esc(l)}</text>`).join("");
+    const num = (c.name.match(/^ف(\d+)/)||[])[1];
+    const dots = books.map((b,i) => `<circle cx="${x + (right?-1:1)*(4 + i*10)}" cy="${y+17}" r="4" style="fill:${COL[b]}"/>`).join("");
+    s += `<g class="cnode ${c.id===sel?"sel":""} ${dim?"dim":""}" data-id="${c.id}" tabindex="0" role="button" aria-label="${esc(c.name)}"><circle class="hit" cx="${x}" cy="${y}" r="22"/><circle class="dot" cx="${x}" cy="${y}" r="9"/>${num?`<text x="${x}" y="${y+4}" text-anchor="middle" style="font-size:9px;font-family:var(--f-mono)">${num}</text>`:""}${t}${dots}</g>`;
+  });
+  s += `<g class="root"><circle cx="${C}" cy="${C}" r="72"/><text x="${C}" y="${C-4}" text-anchor="middle">الذكاء العاطفي</text><text x="${C}" y="${C+20}" text-anchor="middle" style="font-size:12px;font-family:var(--f-body);font-weight:500">جولمان</text></g>`;
+  $("map").innerHTML = s;
+  panel();
+}
+
+function panel(){
+  const c = chapters.find(x => x.id === sel);
+  const links = c.links.length ? `<div class="links">${c.links.map(([b,t,r,k]) => `<div class="lk" style="--c:${COL[b]}"><b>${b}</b><span>${esc(t)}</span><span class="meta">${esc(D.rel[k])} · ${esc(r)}</span></div>`).join("")}</div>` : `<p class="empty">مفيش رابط مباشر مستخدم مع الكتب التانية في الفصل ده.</p>`;
+  $("panel").innerHTML = `
+    <p class="part">${esc(c.part.name)} · ${esc(c.part.thesis)}</p>
+    <h2>${esc(c.name)}<small>${esc(c.page)}</small></h2>
+    <div><h3>أفكار الكتاب</h3><ul class="ideas">${c.ideas.map(([i,p]) => `<li><span>${esc(i)}</span><span>${esc(p)}</span></li>`).join("")}</ul></div>
+    <div><h3>الربط بالكتب التانية</h3>${links}</div>
+    <div><h3>في السلسلة</h3>${c.ep.length ? `<div class="eps">${c.ep.map(e=>`<span>${e}</span>`).join("")}</div>` : `<p class="empty">غير مستخدم لحد دلوقتي</p>`}</div>
+    ${c.note ? `<p class="note">ملاحظة: ${esc(c.note)}</p>` : ""}`;
+}
+
+$("map").addEventListener("click", e => { const g = e.target.closest(".cnode"); if (g){ sel = g.dataset.id; draw(); } });
+$("map").addEventListener("keydown", e => { const g = e.target.closest(".cnode"); if (g && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); sel = g.dataset.id; draw(); document.querySelector(`.cnode[data-id="${sel}"]`).focus(); } });
+draw();
+</script>
