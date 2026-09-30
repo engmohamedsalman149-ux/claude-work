@@ -2,25 +2,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: radial map of the book (root → parts → chapters) beside a reading panel for the selected chapter */
+/* Layout: top-down hierarchy (book → episode/part → chapter), then a reading panel for the selected chapter's ideas and cross-book links */
 :root{
-  --bg:#f6f3ec; --surface:#fffdf8; --ink:#23201a; --dim:#6f685c; --line:#dcd4c3;
-  --gol:#b3862a; --mom:#2f8a7e; --nvc:#c4553d; --cc:#3a64a8; --kz:#7a5aa6;
+  --bg:#f6f3ec; --surface:#fffdf8; --ink:#23201a; --dim:#6f685c; --line:#d6cdb9;
+  --gol:#a97c1f; --mom:#2f8a7e; --nvc:#c4553d; --cc:#3a64a8; --kz:#7a5aa6;
   --f-display:"Reem Kufi","IBM Plex Sans Arabic",system-ui,sans-serif;
   --f-body:"IBM Plex Sans Arabic",system-ui,sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#15130f; --surface:#1e1b16; --ink:#ece6d8; --dim:#a39a88; --line:#3a352b;
+  --bg:#15130f; --surface:#1e1b16; --ink:#ece6d8; --dim:#a39a88; --line:#3d372c;
   --gol:#dcae4c; --mom:#5cc0b1; --nvc:#e58368; --cc:#7ea3e3; --kz:#b096dc; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#15130f; --surface:#1e1b16; --ink:#ece6d8; --dim:#a39a88; --line:#3a352b;
+  --bg:#15130f; --surface:#1e1b16; --ink:#ece6d8; --dim:#a39a88; --line:#3d372c;
   --gol:#dcae4c; --mom:#5cc0b1; --nvc:#e58368; --cc:#7ea3e3; --kz:#b096dc; color-scheme:dark}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.7}
-.wrap{max-width:1240px;margin-inline:auto;padding-inline:16px;padding-block:22px 44px;display:grid;gap:18px}
+.wrap{max-width:1280px;margin-inline:auto;padding-inline:16px;padding-block:22px 48px;display:grid;gap:20px}
 header{display:grid;gap:4px}
 h1{font-family:var(--f-display);font-size:clamp(24px,3.4vw,36px);margin:0;font-weight:700;text-wrap:balance}
-.by{color:var(--dim);font-size:13px;margin:0}
+.by,.hint{color:var(--dim);font-size:13px;margin:0}
 .stats{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--dim);margin:0;padding:0;list-style:none}
 .stats b{color:var(--ink);font-variant-numeric:tabular-nums}
 .filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -28,55 +28,76 @@ h1{font-family:var(--f-display);font-size:clamp(24px,3.4vw,36px);margin:0;font-w
 .fbtn{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:20px;padding:4px 12px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
 .fbtn i{width:10px;height:10px;border-radius:50%;display:inline-block}
 .fbtn[aria-pressed="true"]{border-color:var(--ink);font-weight:600}
-.fbtn:focus-visible{outline:2px solid var(--gol);outline-offset:2px}
-.grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;align-items:start}
-@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
-.mapbox{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px}
-svg{width:100%;height:auto;display:block}
-svg text{font-family:var(--f-body);fill:var(--ink);direction:ltr;unicode-bidi:plaintext}
-.edge{stroke:var(--line);fill:none;stroke-width:1.4}
-.pnode{fill:var(--surface);stroke:var(--gol);stroke-width:1.6}
-.plabel{font-family:var(--f-display);font-size:17px;font-weight:500}
-.cnode{cursor:pointer}
-.cnode circle.hit{fill:transparent}
-.cnode circle.dot{fill:var(--surface);stroke:var(--ink);stroke-width:1.4}
-.cnode.sel circle.dot{fill:var(--gol);stroke:var(--gol)}
-.cnode.dim{opacity:.22}
-.cnode text{font-size:16px}
-.cnode:focus-visible circle.dot{stroke:var(--gol);stroke-width:3}
-.root circle{fill:var(--gol)}
-.root text{font-family:var(--f-display);font-size:17px;font-weight:700;fill:var(--bg)}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px 20px;display:grid;gap:14px;min-width:0}
-.panel .part{font-size:12px;color:var(--gol);letter-spacing:.02em;margin:0}
-.panel h2{font-family:var(--f-display);font-weight:700;font-size:22px;margin:0;text-wrap:balance}
-.panel h2 small{font-family:var(--f-mono);font-size:12px;color:var(--dim);font-weight:500;margin-inline-start:8px}
-.panel h3{font-size:13px;color:var(--dim);font-weight:600;margin:0 0 6px}
+button:focus-visible{outline:2px solid var(--gol);outline-offset:2px}
+
+/* hierarchy */
+.tree{overflow-x:auto;padding-block:4px 8px}
+.rootbox{display:flex;justify-content:center}
+.root{background:var(--gol);color:var(--bg);border-radius:10px;padding:10px 26px;text-align:center}
+.root b{font-family:var(--f-display);font-size:22px;display:block}
+.root span{font-size:12px}
+.stem{width:2px;height:18px;background:var(--line);margin-inline:auto}
+.eps{display:grid;grid-template-columns:repeat(6,minmax(150px,1fr));gap:10px;position:relative;padding-top:18px;min-width:960px}
+.eps::before{content:"";position:absolute;top:0;inset-inline:calc(100%/12);height:2px;background:var(--line)}
+.ep{position:relative;display:grid;gap:8px;align-content:start}
+.ep::before{content:"";position:absolute;top:-18px;inset-inline-start:50%;width:2px;height:18px;background:var(--line)}
+.ephead{background:var(--surface);border:1.5px solid var(--gol);border-radius:8px;padding:8px 10px;display:grid;gap:2px;cursor:pointer;text-align:start;font:inherit;color:inherit}
+.ephead .n{font-family:var(--f-mono);font-size:11px;color:var(--gol)}
+.ephead b{font-family:var(--f-display);font-size:16px;font-weight:700;line-height:1.35}
+.ephead small{font-size:11.5px;color:var(--dim);line-height:1.4}
+.ephead.sel{background:color-mix(in srgb,var(--gol) 14%,var(--surface))}
+.chs{display:grid;gap:6px;border-inline-start:2px solid var(--line);margin-inline-start:12px;padding-inline-start:10px}
+.ch{font:inherit;text-align:start;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 9px;cursor:pointer;display:grid;gap:3px;position:relative}
+.ch::before{content:"";position:absolute;top:50%;inset-inline-start:-12px;width:10px;height:2px;background:var(--line)}
+.ch .t{font-size:13.5px;font-weight:600;line-height:1.4}
+.ch .p{font-family:var(--f-mono);font-size:10.5px;color:var(--dim)}
+.ch .dots{display:flex;gap:4px}
+.ch .dots i{width:8px;height:8px;border-radius:50%;display:block}
+.ch.sel{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.ch.dim{opacity:.3}
+
+/* detail */
+.detail{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:18px;align-items:start}
+@media (max-width:900px){.detail{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px 20px;display:grid;gap:12px;min-width:0}
+.card .k{font-size:12px;color:var(--gol);margin:0}
+.card h2{font-family:var(--f-display);font-weight:700;font-size:22px;margin:0;text-wrap:balance}
+.card h2 small{font-family:var(--f-mono);font-size:12px;color:var(--dim);font-weight:500;margin-inline-start:8px}
+.card h3{font-size:13px;color:var(--dim);font-weight:600;margin:0 0 6px}
+.q{font-family:var(--f-display);font-size:18px;margin:0}
+.spine{margin:0;font-size:14px}
+.chipset{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:2px 8px}
+.bookcount{display:flex;flex-wrap:wrap;gap:10px;font-size:13px}
+.bookcount span{display:inline-flex;gap:6px;align-items:center}
+.bookcount i{width:10px;height:10px;border-radius:50%;display:block}
 .ideas{margin:0;padding:0;list-style:none;display:grid;gap:6px}
 .ideas li{display:flex;gap:10px;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:6px}
 .ideas li span:last-child{font-family:var(--f-mono);font-size:12px;color:var(--gol);white-space:nowrap}
 .links{display:grid;gap:8px}
-.lk{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:start;padding:8px 10px;border-radius:6px;background:color-mix(in srgb,var(--c) 9%,transparent);border-inline-start:3px solid var(--c)}
+.lk{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;padding:8px 10px;border-radius:6px;background:color-mix(in srgb,var(--c) 9%,transparent);border-inline-start:3px solid var(--c)}
 .lk b{font-size:12px;color:var(--c);font-family:var(--f-mono)}
 .lk .meta{grid-column:2;font-size:12px;color:var(--dim)}
-.eps{display:flex;flex-wrap:wrap;gap:6px}
-.eps span{font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);border-radius:4px;padding:1px 7px}
-.note{font-size:13px;color:var(--dim);margin:0}
-.empty{color:var(--dim);font-size:13px;margin:0}
-.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--dim)}
+.empty,.note{color:var(--dim);font-size:13px;margin:0}
 </style>
 
 <div class="wrap" dir="rtl">
   <header>
-    <h1 id="h1">خريطة كتاب «الذكاء العاطفي»</h1>
+    <h1>خريطة كتاب «الذكاء العاطفي»</h1>
     <p class="by" id="by"></p>
     <ul class="stats" id="stats"></ul>
   </header>
   <div class="filters" id="filters"><span>ورّيني الفصول المتربطة بـ:</span></div>
-  <div class="grid">
-    <div class="mapbox"><svg id="map" viewBox="0 0 900 900" role="img" aria-label="خريطة ذهنية لأقسام وفصول الكتاب"></svg></div>
-    <section class="panel" id="panel" aria-live="polite"></section>
+  <p class="hint">كل عمود = حلقة = جزء من الكتاب. اضغط على الحلقة أو على أي فصل.</p>
+  <div class="tree">
+    <div class="rootbox"><div class="root"><b>الذكاء العاطفي</b><span id="rootsub"></span></div></div>
+    <div class="stem"></div>
+    <div class="eps" id="eps"></div>
   </div>
-  <p class="legend">اضغط على أي فصل على الخريطة. الألوان: <span style="color:var(--mom)">● Mind Over Mood</span> <span style="color:var(--nvc)">● NVC</span> <span style="color:var(--cc)">● Crucial Conversations</span> <span style="color:var(--kz)">● Kabat-Zinn</span></p>
+  <div class="detail">
+    <section class="card" id="epcard" aria-live="polite"></section>
+    <section class="card" id="chcard" aria-live="polite"></section>
+  </div>
 </div>
 
 <script>
@@ -84,67 +105,61 @@ const D = /*__DATA__*/null;
 const COL = {MoM:"var(--mom)", NVC:"var(--nvc)", CC:"var(--cc)", KZ:"var(--kz)"};
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const $ = id => document.getElementById(id);
-let sel = "C4", filter = null;
+const CH = {}; D.parts.forEach(p => p.chapters.forEach(c => CH[c.id] = {...c, part:p}));
+let selEp = "E2", selCh = "C4", filter = null;
 
 $("by").textContent = D.book.author + " · " + D.book.edition;
-$("stats").innerHTML = [["أقسام", D.parts.length], ["فصول", D.stats.chapters], ["أفكار بالصفحة", D.stats.ideas], ["روابط بالكتب التانية", D.stats.links], ["فصول مستخدمة في السلسلة", D.stats.used + " من " + D.stats.chapters]]
+$("rootsub").textContent = "جولمان · " + D.episodes.length + " حلقات · ~" + D.episodes.reduce((s,e)=>s+e.minutes,0) + " دقيقة";
+$("stats").innerHTML = [["حلقات", D.episodes.length], ["فصول", D.stats.chapters], ["أفكار بالصفحة", D.stats.ideas], ["روابط بالكتب التانية", D.stats.links]]
   .map(([k,v]) => `<li>${k}: <b>${v}</b></li>`).join("");
 $("filters").insertAdjacentHTML("beforeend", Object.keys(D.books).map(k => `<button class="fbtn" type="button" data-b="${k}" aria-pressed="false"><i style="background:${COL[k]}"></i>${k}</button>`).join(""));
+
+const partName = e => e.parts.map(pid => D.parts.find(p => p.id === pid).name.replace(/^القسم ([^:]+): .*/, "القسم $1").replace(/^مقدمة: .*/,"المقدمة").replace(/^كلمة أخيرة$/,"كلمة أخيرة")).join(" + ");
+
+function drawTree(){
+  $("eps").innerHTML = D.episodes.map(e => `<div class="ep">
+    <button type="button" class="ephead ${e.id===selEp?"sel":""}" data-ep="${e.id}"><span class="n">${e.id} · ~${e.minutes} د</span><b>${esc(e.title)}</b><small>${esc(partName(e))}</small></button>
+    <div class="chs">${e.chapters.map(cid => { const c = CH[cid]; const books = [...new Set(c.links.map(l=>l[0]))];
+      return `<button type="button" class="ch ${cid===selCh?"sel":""} ${filter && !books.includes(filter)?"dim":""}" data-ch="${cid}" data-ep="${e.id}"><span class="t">${esc(c.name)}</span><span class="p">${esc(c.page)}</span><span class="dots">${books.map(b=>`<i style="background:${COL[b]}" title="${b}"></i>`).join("")}</span></button>`; }).join("")}</div>
+  </div>`).join("");
+}
+
+function drawEp(){
+  const e = D.episodes.find(x => x.id === selEp);
+  const cnt = {}; e.chapters.forEach(cid => CH[cid].links.forEach(l => cnt[l[0]] = (cnt[l[0]]||0) + 1));
+  $("epcard").innerHTML = `
+    <p class="k">${e.id} · ${esc(partName(e))} · ~${e.minutes} دقيقة</p>
+    <h2>${esc(e.title)}</h2>
+    <p class="q">«${esc(e.question)}»</p>
+    <div><h3>مسار الحلقة</h3><p class="spine">${esc(e.spine)}</p></div>
+    <div><h3>الكتب التانية اللي هنتطرقلها</h3><div class="bookcount">${Object.entries(cnt).map(([b,n])=>`<span><i style="background:${COL[b]}"></i>${esc(D.books[b])}: ${n}</span>`).join("") || '<span class="empty">لا يوجد</span>'}</div></div>
+    <div><h3>قصص وأدوات جاهزة من الشغل اللي فات</h3><div class="chipset">${e.reuse.map(r=>`<span class="chip">${esc(r)}</span>`).join("")}</div></div>`;
+}
+
+function drawCh(){
+  const c = CH[selCh];
+  const links = c.links.length ? `<div class="links">${c.links.map(([b,t,r,k]) => `<div class="lk" style="--c:${COL[b]}"><b>${b}</b><span>${esc(t)}</span><span class="meta">${esc(D.rel[k])} · ${esc(r)}</span></div>`).join("")}</div>` : `<p class="empty">مفيش رابط مباشر مع الكتب التانية في الفصل ده.</p>`;
+  $("chcard").innerHTML = `
+    <p class="k">${esc(c.part.name)}</p>
+    <h2>${esc(c.name)}<small>${esc(c.page)}</small></h2>
+    <div><h3>أفكار الكتاب</h3><ul class="ideas">${c.ideas.map(([i,p]) => `<li><span>${esc(i)}</span><span>${esc(p)}</span></li>`).join("")}</ul></div>
+    <div><h3>نتطرق وإحنا بنشرحه لـ</h3>${links}</div>
+    ${c.note ? `<p class="note">ملاحظة: ${esc(c.note)}</p>` : ""}`;
+}
+
+function draw(){ drawTree(); drawEp(); drawCh(); }
+$("eps").addEventListener("click", e => {
+  const ch = e.target.closest(".ch"), ep = e.target.closest(".ephead");
+  if (ch){ selCh = ch.dataset.ch; selEp = ch.dataset.ep; }
+  else if (ep){ selEp = ep.dataset.ep; selCh = D.episodes.find(x=>x.id===selEp).chapters[0]; }
+  else return;
+  draw();
+});
 $("filters").addEventListener("click", e => {
   const b = e.target.closest(".fbtn"); if (!b) return;
   filter = filter === b.dataset.b ? null : b.dataset.b;
   document.querySelectorAll(".fbtn").forEach(x => x.setAttribute("aria-pressed", x.dataset.b === filter));
-  draw();
+  drawTree();
 });
-
-const chapters = D.parts.flatMap(p => p.chapters.map(c => ({...c, part:p})));
-const N = chapters.length, C = 450, RP = 165, RC = 285;
-const solo = p => p.chapters.length === 1;
-chapters.forEach((c,i) => { c.ang = -Math.PI/2 + (i + .5) / N * 2 * Math.PI; });
-D.parts.forEach(p => { const cs = chapters.filter(c => c.part === p); p.ang = cs.reduce((s,c)=>s+c.ang,0)/cs.length; });
-const xy = (r,a) => [C + r*Math.cos(a), C + r*Math.sin(a)];
-
-function wrapLabel(t, n){ const w = t.split(" "), out=[]; let l=""; for (const x of w){ if ((l+" "+x).trim().length > n){ out.push(l.trim()); l=x; } else l += " "+x; } out.push(l.trim()); return out; }
-
-function draw(){
-  let s = "";
-  D.parts.filter(p => !solo(p)).forEach(p => { const [px,py] = xy(RP,p.ang); s += `<path class="edge" d="M${C},${C} Q${(C+px)/2},${(C+py)/2} ${px},${py}"/>`; });
-  chapters.forEach(c => { const [px,py] = solo(c.part) ? [C,C] : xy(RP,c.part.ang), [cx,cy] = xy(RC,c.ang); s += `<path class="edge" d="M${px},${py} L${cx},${cy}"/>`; });
-  D.parts.filter(p => !solo(p)).forEach(p => {
-    const [x,y] = xy(RP,p.ang), lines = wrapLabel(p.name.replace(/^القسم [^:]+: /,""), 14);
-    const w = 150, h = 22 + lines.length*20;
-    s += `<rect class="pnode" x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="8"/>`;
-    lines.forEach((l,i) => s += `<text class="plabel" x="${x}" y="${y - (lines.length-1)*10 + i*20 + 6}" text-anchor="middle">${esc(l)}</text>`);
-  });
-  chapters.forEach(c => {
-    const [x,y] = xy(RC,c.ang), right = Math.cos(c.ang) >= 0;
-    const books = [...new Set(c.links.map(l => l[0]))];
-    const dim = filter && !books.includes(filter);
-    const lx = x + (right ? 16 : -16), anchor = right ? "start" : "end";
-    const lines = wrapLabel(c.name.replace(/^ف\d+ /,"").replace(/ \(.*\)$/,""), 13);
-    let t = lines.map((l,i) => `<text x="${lx}" y="${y + 5 + (i - (lines.length-1)/2)*18}" text-anchor="${anchor}">${esc(l)}</text>`).join("");
-    const num = (c.name.match(/^ف(\d+)/)||[])[1];
-    const dots = books.map((b,i) => `<circle cx="${x + (right?-1:1)*(4 + i*10)}" cy="${y+17}" r="4" style="fill:${COL[b]}"/>`).join("");
-    s += `<g class="cnode ${c.id===sel?"sel":""} ${dim?"dim":""}" data-id="${c.id}" tabindex="0" role="button" aria-label="${esc(c.name)}"><circle class="hit" cx="${x}" cy="${y}" r="22"/><circle class="dot" cx="${x}" cy="${y}" r="9"/>${num?`<text x="${x}" y="${y+4}" text-anchor="middle" style="font-size:9px;font-family:var(--f-mono)">${num}</text>`:""}${t}${dots}</g>`;
-  });
-  s += `<g class="root"><circle cx="${C}" cy="${C}" r="72"/><text x="${C}" y="${C-4}" text-anchor="middle">الذكاء العاطفي</text><text x="${C}" y="${C+20}" text-anchor="middle" style="font-size:12px;font-family:var(--f-body);font-weight:500">جولمان</text></g>`;
-  $("map").innerHTML = s;
-  panel();
-}
-
-function panel(){
-  const c = chapters.find(x => x.id === sel);
-  const links = c.links.length ? `<div class="links">${c.links.map(([b,t,r,k]) => `<div class="lk" style="--c:${COL[b]}"><b>${b}</b><span>${esc(t)}</span><span class="meta">${esc(D.rel[k])} · ${esc(r)}</span></div>`).join("")}</div>` : `<p class="empty">مفيش رابط مباشر مستخدم مع الكتب التانية في الفصل ده.</p>`;
-  $("panel").innerHTML = `
-    <p class="part">${esc(c.part.name)} · ${esc(c.part.thesis)}</p>
-    <h2>${esc(c.name)}<small>${esc(c.page)}</small></h2>
-    <div><h3>أفكار الكتاب</h3><ul class="ideas">${c.ideas.map(([i,p]) => `<li><span>${esc(i)}</span><span>${esc(p)}</span></li>`).join("")}</ul></div>
-    <div><h3>الربط بالكتب التانية</h3>${links}</div>
-    <div><h3>في السلسلة</h3>${c.ep.length ? `<div class="eps">${c.ep.map(e=>`<span>${e}</span>`).join("")}</div>` : `<p class="empty">غير مستخدم لحد دلوقتي</p>`}</div>
-    ${c.note ? `<p class="note">ملاحظة: ${esc(c.note)}</p>` : ""}`;
-}
-
-$("map").addEventListener("click", e => { const g = e.target.closest(".cnode"); if (g){ sel = g.dataset.id; draw(); } });
-$("map").addEventListener("keydown", e => { const g = e.target.closest(".cnode"); if (g && (e.key==="Enter"||e.key===" ")){ e.preventDefault(); sel = g.dataset.id; draw(); document.querySelector(`.cnode[data-id="${sel}"]`).focus(); } });
 draw();
 </script>
