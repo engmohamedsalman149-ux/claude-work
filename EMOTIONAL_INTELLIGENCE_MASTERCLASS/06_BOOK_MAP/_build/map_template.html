@@ -88,7 +88,7 @@ button:focus-visible{outline:2px solid var(--gol);outline-offset:2px}
     <ul class="stats" id="stats"></ul>
   </header>
   <div class="filters" id="filters"><span>ورّيني الفصول المتربطة بـ:</span></div>
-  <p class="hint">كل عمود = حلقة = جزء من الكتاب. اضغط على الحلقة أو على أي فصل.</p>
+  <p class="hint">كل عمود = حلقة = جزء من الكتاب. الجمهور: المهندسين وبيئة العمل. اضغط على الحلقة أو على أي فصل.</p>
   <div class="tree">
     <div class="rootbox"><div class="root"><b>الذكاء العاطفي</b><span id="rootsub"></span></div></div>
     <div class="stem"></div>
@@ -133,7 +133,9 @@ function drawEp(){
     <p class="q">«${esc(e.question)}»</p>
     <div><h3>مسار الحلقة</h3><p class="spine">${esc(e.spine)}</p></div>
     <div><h3>الكتب التانية اللي هنتطرقلها</h3><div class="bookcount">${Object.entries(cnt).map(([b,n])=>`<span><i style="background:${COL[b]}"></i>${esc(D.books[b])}: ${n}</span>`).join("") || '<span class="empty">لا يوجد</span>'}</div></div>
-    <div><h3>قصص وأدوات جاهزة من الشغل اللي فات</h3><div class="chipset">${e.reuse.map(r=>`<span class="chip">${esc(r)}</span>`).join("")}</div></div>`;
+    <div><h3>من الكتاب (القصة الأصلية)</h3><div class="chipset">${e.examples.book.map(r=>`<span class="chip">${esc(r)}</span>`).join("")}</div></div>
+    <div><h3>مثال من شغل المهندسين</h3><div class="chipset">${e.examples.work.map(r=>`<span class="chip">${esc(r)}</span>`).join("")}</div></div>
+    <div><h3>مثال من الحياة</h3><div class="chipset">${e.examples.life.map(r=>`<span class="chip">${esc(r)}</span>`).join("")}</div></div>`;
 }
 
 function drawCh(){
