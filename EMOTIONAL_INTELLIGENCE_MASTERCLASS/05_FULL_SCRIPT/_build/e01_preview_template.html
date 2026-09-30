@@ -1,0 +1,335 @@
+<title>الحلقة 1 · «تمام.»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a cinema-style monitor (16:9 stage) with a production strip under it — single dark screening-room look by choice */
+:root{
+  --room:#0d1216; --panel:#151c22; --line:#26313a; --ink:#e9e5dc; --dim:#8d97a1;
+  --cam:#5fb58a; --gold:#d8b25a; --hot:#d9574a; --harm:#7d3440; --com:#9aa3ad;
+  --stage:#10171c; --stage2:#18222a;
+  --f-display:"Reem Kufi","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+html,body{background:var(--room);color:var(--ink)}
+body{font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:16px;padding-block:20px 40px;display:grid;gap:16px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(22px,3.2vw,32px);margin:0;text-wrap:balance}
+h1 small{font-family:var(--f-body);font-weight:500;font-size:.5em;color:var(--dim);margin-inline-start:10px}
+.note{color:var(--dim);font-size:13px;margin:0}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:16px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+.stage{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--stage);border:1px solid var(--line);border-radius:6px;overflow:hidden;container-type:inline-size}
+.layer{position:absolute;inset:0;display:grid;place-items:center}
+.sub{position:absolute;inset-inline:6%;bottom:4%;text-align:center;font-size:clamp(12px,2.3cqw,22px);font-weight:500;line-height:1.5;text-shadow:0 1px 3px #000c;z-index:5}
+.sub span{background:#0009;padding:.15em .5em;border-radius:3px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.sub .hold{color:var(--gold)}
+.sub .vis{color:var(--dim);font-size:.85em}
+.src{position:absolute;bottom:3.5%;inset-inline-end:3%;font-family:var(--f-mono);font-size:clamp(8px,1.2cqw,12px);color:var(--dim);background:#0008;padding:.2em .6em;border-radius:3px;z-index:6;direction:ltr}
+.badge{position:absolute;top:3%;inset-inline-start:3%;display:flex;gap:6px;z-index:6}
+.chip{font-family:var(--f-mono);font-size:clamp(8px,1.2cqw,11px);padding:.15em .55em;border-radius:3px;background:#0009;color:var(--dim);border:1px solid var(--line);direction:ltr}
+.chip.on{color:var(--ink);border-color:var(--gold)}
+/* stage primitives */
+.big{font-family:var(--f-display);font-size:6.2cqw;text-align:center;text-wrap:balance;padding-inline:8%}
+.big.s{font-size:3.6cqw}
+.gold{color:var(--gold)} .red{color:var(--hot)} .green{color:var(--cam)}
+.phone{width:34cqw;height:88%;background:#0a0f13;border:1px solid var(--line);border-radius:2.4cqw;padding:2.2cqw 1.6cqw;display:flex;flex-direction:column;gap:1cqw;font-size:1.7cqw}
+.phone .who{text-align:center;color:var(--dim);font-size:1.4cqw;border-bottom:1px solid var(--line);padding-bottom:.8cqw}
+.phone .top{text-align:center;color:var(--gold);font-size:1.4cqw}
+.msgs{display:flex;flex-direction:column;gap:.9cqw;margin-top:auto}
+.b{max-width:82%;padding:.7cqw 1.1cqw;border-radius:1.2cqw;line-height:1.45}
+.b i{display:block;font-style:normal;font-family:var(--f-mono);font-size:1cqw;color:var(--dim);margin-top:.3cqw;direction:ltr;text-align:left}
+.b.me{align-self:flex-start;background:#23433a}
+.b.them{align-self:flex-end;background:#2a333b}
+.typing{align-self:flex-start;color:var(--dim);font-size:1.3cqw}
+.counter{position:absolute;top:4%;inset-inline-end:4%;font-family:var(--f-mono);font-size:3.2cqw;color:var(--hot);direction:ltr}
+.frozen{filter:grayscale(.7) brightness(.8)}
+.thoughts{position:absolute;inset:0}
+.thoughts span{position:absolute;font-family:var(--f-display);color:var(--ink);opacity:.9}
+.chips{display:flex;gap:2cqw;justify-content:center;margin-top:3cqw;flex-wrap:wrap}
+.chips span{font-size:2.8cqw;border:1px solid var(--line);padding:.4cqw 1.6cqw;border-radius:5cqw;background:var(--stage2)}
+.chips .gold{border-color:var(--gold)}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2cqw;width:92%;height:70%}
+.tri>div{background:var(--stage2);border:1px solid var(--line);border-radius:1cqw;display:grid;place-items:center;align-content:center;gap:1cqw;text-align:center;padding:1cqw}
+.tri .t{font-family:var(--f-display);font-size:2.8cqw}
+.tri .v{font-size:1.8cqw;color:var(--dim)}
+.therm{width:2.2cqw;height:14cqw;border:1px solid var(--line);border-radius:1.2cqw;position:relative;overflow:hidden;background:#0a0f13}
+.therm b{position:absolute;inset-inline:0;bottom:0;background:var(--hot);transition:height .8s}
+.sil{width:9cqw;height:13cqw;position:relative}
+.sil::before{content:"";position:absolute;inset-inline:30%;top:0;height:36%;border-radius:50%;background:#2c3842}
+.sil::after{content:"";position:absolute;inset-inline:6%;bottom:0;height:58%;border-radius:45% 45% 8% 8%;background:#2c3842}
+.presenter{display:grid;place-items:center;width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#1c2730,#10171c 70%)}
+.presenter .sil{transform-origin:50% 100%}
+.presenter .lbl{position:absolute;top:3%;inset-inline-end:3%;font-size:clamp(9px,1.3cqw,13px);color:var(--dim)}
+.row{display:flex;gap:3cqw;align-items:center;justify-content:center;flex-wrap:wrap}
+.metro{display:flex;align-items:center;width:84%;justify-content:space-between;position:relative}
+.metro::before{content:"";position:absolute;inset-inline:4%;top:1.6cqw;height:.5cqw;background:var(--line)}
+.st{position:relative;display:grid;justify-items:center;gap:1.2cqw;width:22%;text-align:center}
+.st i{width:3.6cqw;height:3.6cqw;border-radius:50%;background:var(--stage2);border:.4cqw solid var(--dim);display:block}
+.st.lit i{border-color:var(--ink);background:#2c3842}
+.st.gl i{border-color:var(--gold);background:var(--gold);box-shadow:0 0 3cqw var(--gold)}
+.st.bl{filter:blur(.35cqw);opacity:.6}
+.st span{font-size:2.2cqw}
+.pent{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2cqw;width:84%}
+.pent span{border:1px solid var(--gold);border-radius:5cqw;text-align:center;font-size:2.2cqw;padding:.6cqw}
+.card{max-width:70%;background:var(--stage2);border:1px solid var(--line);border-radius:1cqw;padding:3cqw;font-family:var(--f-display);font-size:3.4cqw;text-align:center;text-wrap:balance}
+.cc{display:grid;grid-template-columns:1fr 1fr;width:86%;gap:3cqw}
+.cc>div{border-radius:1cqw;padding:3cqw;text-align:center;display:grid;gap:1cqw}
+.cc .c1{border:1px solid var(--cam)} .cc .c2{border:1px solid var(--gold)}
+.cc .ic{font-size:7cqw}
+.cc .nm{font-family:var(--f-display);font-size:3.2cqw}
+.gcard{background:var(--stage2);border:1px solid var(--line);border-radius:1cqw;padding:2.4cqw 3cqw;font-family:var(--f-display);font-size:3.6cqw;text-align:center;min-width:50%}
+.stamp{margin-top:1.6cqw;font-size:2.6cqw;font-family:var(--f-body);font-weight:600}
+.dots{display:flex;gap:.8cqw;justify-content:center;margin-top:2cqw}
+.dots i{width:1.2cqw;height:1.2cqw;border-radius:50%;background:var(--line)}
+.dots i.cam{background:var(--cam)} .dots i.com{background:var(--gold)}
+.lens{display:grid;grid-template-columns:1fr 1fr;gap:4cqw;width:80%;text-align:center;font-family:var(--f-display);font-size:3.4cqw}
+.lens .soft{filter:blur(.6cqw);color:var(--gold)}
+.lens .sharp{color:var(--cam)}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;width:80%;margin-top:3cqw}
+.cols2 div{border:1px dashed var(--line);border-radius:1cqw;height:14cqw;display:grid;place-items:start center;padding-top:1.4cqw;font-size:2.4cqw}
+.wires{display:grid;gap:1.6cqw;width:80%}
+.wire{display:flex;align-items:center;gap:2cqw;font-size:2.2cqw;color:var(--com)}
+.wire::before{content:"";flex:1;height:.4cqw;background:var(--line);order:2}
+.wire.hot{color:var(--hot);font-family:var(--f-display);font-size:3cqw}
+.wire.hot::before{background:var(--hot);box-shadow:0 0 1.6cqw var(--hot)}
+.court{display:grid;grid-template-columns:1fr auto 1fr;gap:3cqw;width:88%;align-items:end}
+.pan{display:grid;gap:1cqw;min-height:22cqw;align-content:end;border-bottom:.5cqw solid var(--dim);padding-bottom:1cqw;transition:transform .8s}
+.pan h4{margin:0;text-align:center;font-size:2.4cqw;color:var(--dim);font-weight:500}
+.pan span{background:var(--stage2);border:1px solid var(--line);border-radius:.8cqw;padding:.6cqw 1cqw;font-size:1.9cqw;text-align:center}
+.pan em{border:1px dashed var(--line);border-radius:.8cqw;height:3.6cqw;display:block}
+.cage{display:grid;justify-items:center;gap:1cqw;padding-bottom:2cqw}
+.cage b{font-family:var(--f-display);color:var(--hot);font-size:2.4cqw;border:.3cqw solid var(--dim);padding:1cqw 1.6cqw;border-radius:.6cqw}
+.cage small{font-size:1.6cqw;color:var(--gold)}
+.glass{display:grid;justify-items:center;gap:2cqw}
+.glass .lensbox{width:46cqw;height:22cqw;border-radius:11cqw;border:.8cqw solid #445;display:grid;place-items:center;font-family:var(--f-display);font-size:3cqw;text-align:center;padding:2cqw;transition:background .6s}
+.glass .dark{background:#050709;color:#555}
+.glass .rose{background:linear-gradient(135deg,#f3a6c0,#e889a8);color:#7a2b45}
+.glass .clear{background:transparent;color:var(--ink);border-color:var(--cam)}
+.tpl{display:grid;gap:1.4cqw;width:70%}
+.tpl div{background:#e9e1cf;color:#2b2a26;border-radius:.6cqw;padding:1.4cqw 2cqw;font-size:2.4cqw;min-height:4.4cqw}
+.tpl b{color:#8a6a1f}
+.harmcol{display:grid;gap:1.4cqw;justify-items:center;padding:3cqw 5cqw;border-radius:1cqw;border:1px solid var(--cam);transition:background 1s}
+.harmcol.on{background:var(--harm);border-color:var(--harm)}
+.harmcol .t{font-family:var(--f-display);font-size:3.4cqw}
+.strike{text-decoration:line-through;text-decoration-color:var(--dim);opacity:.45}
+.ink{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 70%,#1d2328,#0b0f12 70%)}
+.cardtitle{position:absolute;top:6%;inset-inline:0;text-align:center;font-family:var(--f-display);font-size:2.6cqw;color:var(--dim)}
+.titlecard{text-align:center;display:grid;gap:2cqw}
+.titlecard .s{color:var(--dim);font-size:2.4cqw;letter-spacing:.04em}
+.titlecard .e{font-family:var(--f-display);font-size:6.5cqw}
+/* side panel */
+.side{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;display:grid;gap:10px;min-width:0}
+.side dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:13px}
+.side dt{color:var(--dim)} .side dd{margin:0}
+.tc{font-family:var(--f-mono);font-size:26px;direction:ltr;text-align:right;font-variant-numeric:tabular-nums}
+.side h2{margin:0;font-family:var(--f-display);font-size:18px;font-weight:500}
+/* transport */
+.transport{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+button,select{font:inherit;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:6px 14px;cursor:pointer}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+button.primary{border-color:var(--gold);min-width:92px}
+.scrub{position:relative;flex:1 1 320px;min-width:0}
+.scrub input{width:100%;accent-color:var(--gold);direction:ltr}
+.bands{display:flex;height:8px;border-radius:2px;overflow:hidden;direction:ltr;margin-top:2px}
+.bands i{display:block;height:100%}
+.scenes{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.scenes button{text-align:start;padding:8px 10px;display:grid;gap:2px}
+.scenes button.cur{border-color:var(--gold);background:#1c242b}
+.scenes b{font-family:var(--f-mono);font-size:11px;color:var(--dim);font-weight:500;direction:ltr;text-align:right}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap" dir="rtl">
+  <header>
+    <h1>الحلقة 1 · «تمام.» <small>معاينة حركية (Animatic)</small></h1>
+    <p class="note">رسم تقريبي للشكل والتوقيت، مش التصميم النهائي. الترجمة السفلية = كلامك من السكريبت.</p>
+  </header>
+
+  <div class="main">
+    <div class="stage" id="stage" aria-live="off"></div>
+    <aside class="side">
+      <div class="tc" id="tc">00:00</div>
+      <h2 id="scTitle">—</h2>
+      <dl>
+        <dt>المشهد</dt><dd id="scId">—</dd>
+        <dt>الشريحة</dt><dd id="slId">—</dd>
+        <dt>المقدم</dt><dd id="pres">—</dd>
+        <dt>الكاميرا</dt><dd id="cam">—</dd>
+      </dl>
+      <p class="note">ON = ظاهر · VO = صوت فقط · C قريبة · XC قريبة جدًا · M متوسطة</p>
+    </aside>
+  </div>
+
+  <div class="transport">
+    <button class="primary" id="play" type="button">▶ تشغيل</button>
+    <label class="note" for="speed">السرعة</label>
+    <select id="speed"><option value="1">1×</option><option value="2">2×</option><option value="4">4×</option><option value="8">8×</option></select>
+    <div class="scrub">
+      <input type="range" id="scrub" min="0" step="0.1" value="0" aria-label="موضع التشغيل">
+      <div class="bands" id="bands" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="scenes" id="scenes"></div>
+</div>
+
+<script>
+const D = /*__DATA__*/null;
+const $ = id => document.getElementById(id);
+const fmt = s => { s = Math.max(0, Math.floor(s)); return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let t = 0, playing = false, last = null;
+
+const at = (arr, x) => arr.find(o => x >= o.a && x < o.b);
+
+function presenterLayer(cam){
+  const scale = /XC/.test(cam) ? 1.9 : /C/.test(cam) && !/—/.test(cam) ? 1.45 : /Punch/.test(cam) ? 1.25 : 1;
+  return `<div class="presenter"><div class="sil" style="transform:scale(${scale}) translateY(${(scale-1)*18}%)"></div><div class="lbl">المقدم · ${esc(cam)}</div></div>`;
+}
+const therm = v => `<div class="therm"><b style="height:${v}%"></b></div>`;
+
+function renderSlide(s, t){
+  const lt = t - s.a;
+  switch(s.k){
+    case "black": return `<div class="layer" style="background:#000"><div class="big s" style="color:#333">🔔</div></div>`;
+    case "chat": {
+      const cnt = s.counter ? `<div class="counter">00:${String(Math.min(40, Math.floor(t - s.counter[0]))).padStart(2,"0")}</div>` : "";
+      let msgs = s.msgs.slice();
+      let typing = "";
+      if (s.typing && t < 60) { msgs = msgs.slice(0,1); typing = `<div class="typing">✍️ بتكتب… وبتمسح</div>`; }
+      if (s.freeze && t < 65) { msgs = msgs.slice(0,2); typing = t >= 62 ? `<div class="typing" style="align-self:flex-end">ريم بتكتب…</div>` : ""; }
+      const frozen = s.freeze && t >= s.freeze ? " frozen" : "";
+      return `<div class="layer${frozen}">${cnt}<div class="phone"><div class="who">ريم</div>${s.top?`<div class="top">${esc(s.top)}</div>`:""}<div class="msgs">${msgs.map(m=>`<div class="b ${m[0]}">${esc(m[1])}<i>${m[2]} م${m[0]=="me"?" ✓✓":""}</i></div>`).join("")}${typing}</div></div></div>`;
+    }
+    case "inner": {
+      const n = Math.min(s.thoughts.length, Math.floor(lt / 5) + 1);
+      const pos = [[12,20,3.6],[60,28,3.2],[20,62,3.9],[58,70,3.4]];
+      const reps = Math.min(5, Math.floor(lt / 4));
+      return `<div class="layer"><div class="counter">00:${String(Math.min(40, Math.floor(t - s.counter[0]))).padStart(2,"0")}</div>
+        <div class="big" style="transform:scale(${1 + reps*0.05})">«تمام.»</div>
+        <div class="thoughts">${s.thoughts.slice(0,n).map((x,i)=>`<span style="inset-inline-start:${pos[i][0]}%;top:${pos[i][1]}%;font-size:${pos[i][2]}cqw">${esc(x)}</span>`).join("")}</div></div>`;
+    }
+    case "question": return `<div class="layer"><div><div class="big ${t>=s.qa?"":"s"}" style="opacity:${t>=s.qa?1:.25}">${esc(s.q)}</div><div class="chips">${s.chips.filter(c=>t>=c[1]).map(c=>`<span class="${c[2]}">${esc(c[0])}</span>`).join("")}</div></div></div>`;
+    case "split3": return `<div class="layer"><div style="display:grid;gap:2cqw;justify-items:center;width:100%"><div class="tri">${s.panels.map(p=>`<div>${p[1]&&p[2]?therm(+p[2]):""}${p[2]=="sil"?`<div class="sil"></div>`:`<div class="t ${p[2]=="red"?"red":""}">${esc(p[0])}</div>`}${p[1]?`<div class="v">${esc(p[1])}</div>`:""}</div>`).join("")}</div>${s.big?`<div class="big s gold">${esc(s.big)}</div>`:""}</div></div>`;
+    case "prompt": return `<div class="layer" style="background:#0a0f13"><div style="text-align:center;display:grid;gap:3cqw"><div style="font-size:9cqw">${s.icon}</div><div class="big s">${esc(s.text)}</div></div></div>`;
+    case "icons": return `<div class="layer" style="place-items:end center;padding-bottom:12%"><div class="row" style="background:#0008;padding:1.4cqw 3cqw;border-radius:1cqw;font-size:3.4cqw;gap:3.4cqw">${s.items.slice(0, Math.min(6, Math.floor(lt/3)+1)).map(x=>`<span>${x}</span>`).join("")}</div></div>`;
+    case "shadow": return `<div class="layer" style="place-items:center end;padding-inline-end:10%"><div style="position:relative;filter:brightness(.5)"><div style="position:absolute;inset-inline:22%;top:-1.2cqw;height:2.6cqw;border-radius:50%;background:#3a4650;z-index:1"></div><div class="sil" style="transform:scale(1.3)"></div></div></div>`;
+    case "title": return `<div class="layer"><div class="titlecard"><div class="s">${esc(s.series)}</div><div class="e">${esc(s.ep)}</div></div></div>`;
+    case "big": return `<div class="layer" ${s.ovl?'style="place-items:end center;padding-bottom:14%"':""}><div style="display:grid;gap:2cqw;justify-items:center;${s.ovl?"background:#000a;padding:1.4cqw 3cqw;border-radius:1cqw":""}"><div class="big ${s.small?"s":""} ${s.gold?"gold":""}">${esc(s.text)}</div>${s.sub?`<div style="font-size:2.4cqw;color:var(--dim)">${esc(s.sub)}</div>`:""}${s.temp?`<div class="row">${therm(t < s.b-6 ? s.temp[0] : s.temp[1])}<span style="font-size:2.2cqw">ضيق ${t < s.b-6 ? s.temp[0] : s.temp[1]}</span></div>`:""}</div></div>`;
+    case "list": return `<div class="layer"><div style="display:grid;gap:1.6cqw;justify-items:center"><div style="font-size:2.4cqw;color:var(--dim)">${esc(s.head)}</div>${s.items.slice(0, Math.floor(lt/8)+1).map(x=>`<div class="gcard" style="font-size:3cqw">${esc(x)}</div>`).join("")}</div></div>`;
+    case "exercise": {
+      const filled = t >= s.fill;
+      return `<div class="layer"><div style="display:grid;gap:2cqw;justify-items:center;width:80%"><div class="b them" style="font-size:2.6cqw;align-self:center">${esc(s.chat)}<i>المدير</i></div>${lt>5?`<div class="big s gold">${esc(s.prompt)}</div><div class="cols2" style="grid-template-columns:repeat(3,1fr)">${s.boxes.map(b=>`<div style="height:8cqw;place-items:center;padding:0">${filled?esc(b):"▍"}</div>`).join("")}</div>`:""}</div></div>`;
+    }
+    case "metro": {
+      const lit = s.rewind ? Math.min(4, Math.floor(lt/5)+1) : Math.min(4, Math.floor(lt/3)+1);
+      const st = s.rewind ? s.stations.slice().map((x,i)=>({x,i})) : s.stations.map((x,i)=>({x,i}));
+      return `<div class="layer" ${s.ovl?'style="place-items:end center;padding-bottom:16%"':""}><div class="metro" ${s.ovl?'style="background:#000a;padding:2cqw;border-radius:1cqw"':""}>${st.map(({x,i})=>{
+        const on = s.rewind ? i >= 4 - lit : i < lit;
+        const cls = ["st", on?"lit":"", s.glow===i?"gl":"", s.blur===i && lt>18?"bl":""].join(" ");
+        return `<div class="${cls}"><i></i><span class="${s.glow===i?"gold":""}">${esc(x)}</span></div>`;}).join("")}</div>${s.rewind?`<div class="cardtitle">◀◀ القطر راجع لورا</div>`:""}</div>`;
+    }
+    case "five": return `<div class="layer"><div style="display:grid;gap:3cqw;justify-items:center;width:100%"><div class="pent">${s.items.map(x=>`<span>${esc(x)}</span>`).join("")}</div><div style="font-size:2.2cqw;color:var(--dim)">↔ كلهم ماسكين في بعض ↔</div></div></div>`;
+    case "card": return `<div class="layer" style="background:#0009"><div class="card">${esc(s.text)}</div></div>`;
+    case "camcom": return `<div class="layer"><div class="cc"><div class="c1"><div class="ic">🎥</div><div class="nm green">كاميرا</div><div style="font-size:1.8cqw;color:var(--dim)">بتسجّل… وخلاص</div></div><div class="c2"><div class="ic">🎙</div><div class="nm gold">معلّق</div><div style="font-size:1.8cqw;color:var(--dim)">«إيه الغباء ده؟!»</div></div></div></div>`;
+    case "game": {
+      let i = s.cards.findIndex((c,j) => t >= c[2] && (j == s.cards.length-1 || t < s.cards[j+1][2]));
+      if (i < 0) return `<div class="layer"><div class="big s">يلا نلعب: كاميرا؟ ولا معلّق؟</div></div>`;
+      const c = s.cards[i], stamped = t >= c[2] + 3;
+      return `<div class="layer"><div style="display:grid;justify-items:center"><div class="gcard">«${esc(c[0])}»${stamped?`<div class="stamp ${c[1]=="cam"?"green":"gold"}">${c[1]=="cam"?"🎥 كاميرا":"🎙 معلّق"}</div>`:`<div class="stamp" style="color:var(--dim)">…</div>`}</div><div class="dots">${s.cards.map((x,j)=>`<i class="${j<i || (j==i&&stamped) ? x[1] : ""}"></i>`).join("")}</div></div></div>`;
+    }
+    case "blur": return `<div class="layer"><div class="lens"><div class="sharp">🎥<br>${esc(s.sharp)}</div><div class="soft">🎥<br>${esc(s.soft)}</div></div></div>`;
+    case "twocol": return `<div class="layer" style="background:#0a0f13"><div style="display:grid;justify-items:center;width:100%"><div class="big s">${esc(s.prompt)}</div>${lt>20?`<div class="cols2">${s.cols.map(x=>`<div>${esc(x)}</div>`).join("")}</div>`:""}</div></div>`;
+    case "wires": {
+      const hot = t >= s.hotAt;
+      return `<div class="layer"><div class="wires">${s.wires.map(w=>`<div class="wire" style="${hot?"opacity:.4":""}">${esc(w)}</div>`).join("")}${hot?`<div class="wire hot">${esc(s.hot)}</div>`:""}</div>${hot?`<div style="position:absolute;inset-inline-end:5%;top:18%" class="row">${therm(s.temp)}<span style="font-size:1.8cqw">ضيق ${s.temp}</span></div>`:""}</div>`;
+    }
+    case "court": {
+      if (s.empty) return `<div class="layer"><div style="display:grid;gap:2cqw;justify-items:center;width:100%"><div class="court"><div class="pan"><h4>مع</h4><em></em><em></em></div><div class="cage"><b>؟</b></div><div class="pan"><h4>ضد</h4><em></em><em></em></div></div><div class="big s gold">${esc(s.label)}</div></div></div>`;
+      const pro = s.pro.filter(x=>t>=x[1]), con = s.con.filter(x=>t>=x[1]);
+      const tilt = Math.max(-6, Math.min(6, (con.length - pro.length) * 2));
+      return `<div class="layer"><div class="court"><div class="pan" style="transform:translateY(${-tilt}cqw)"><h4>مع</h4>${pro.map(x=>`<span>${esc(x[0])}</span>`).join("")}</div><div class="cage"><small>متّهمة… مش محكوم عليها</small><b>أنا تقيلة عليها</b></div><div class="pan" style="transform:translateY(${tilt}cqw)"><h4>ضد</h4>${con.map(x=>`<span>${esc(x[0])}</span>`).join("")}</div></div></div>`;
+    }
+    case "glasses": {
+      let ph = s.phases[0]; for (const p of s.phases) if (t >= p[0]) ph = p;
+      return `<div class="layer"><div class="glass"><div class="lensbox ${ph[1]}">${esc(ph[2])}</div><div style="font-size:2.2cqw;color:var(--dim)">${ph[1]=="dark"?"النظارة السودا":ph[1]=="rose"?"النظارة الوردي":"النظارة الشفافة"}</div></div></div>`;
+    }
+    case "swap": return `<div class="layer"><div class="big">فكّر <span class="strike">إيجابي</span> ← <span class="gold">فكّر كامل</span></div></div>`;
+    case "template": {
+      const cleared = t >= s.clearAt, n = cleared ? 0 : Math.min(2, Math.floor(lt/5)+ (lt>5?1:0));
+      return `<div class="layer"><div class="tpl"><div><b>صحيح إن…</b> ${n>0?esc(s.noor[0].replace("صحيح إن ","")):""}</div><div><b>وكمان…</b> ${n>1?esc(s.noor[1].replace("وكمان ","")):""}</div>${cleared?`<p class="gold" style="text-align:center;font-size:2.2cqw;margin:0">دورك ✍️</p>`:""}</div></div>`;
+    }
+    case "rewind": {
+      const isNew = t >= s.newAt, v = lt > 8 ? s.temp[1] : s.temp[0];
+      return `<div class="layer"><div class="counter" style="color:var(--gold)">00:40</div><div class="row"><div class="phone" style="height:78%;width:30cqw"><div class="who">ريم</div><div class="msgs"><div class="b them">تمام.<i>7:52 م</i></div>${isNew?`<div class="b me">تمام يعني ماشي؟ ولا مشغولة؟ 😄<i>7:53 م ✓✓</i></div>`:`<div class="typing">${lt<3?"◀◀ الشريط بيرجع…":"الثانية 40 — قبل «إرسال»"}</div>`}</div></div><div style="display:grid;gap:1cqw;justify-items:center">${therm(v)}<span style="font-size:2cqw">ضيق ${v}</span></div></div></div>`;
+    }
+    case "ink": return `<div class="layer"><div class="ink"></div><div class="cardtitle">${esc(s.title)}</div><div class="row" style="position:relative;align-items:flex-end;gap:6cqw"><div class="sil" style="transform:scale(2.2);filter:brightness(.55)"></div><div class="sil" style="transform:scale(1.1);filter:brightness(.4)"></div></div><div style="position:absolute;bottom:14%;font-size:1.5cqw;color:var(--dim)">رسم رمزي — لا يشبه ممثلًا ولا يعيد لقطة من الفيلم</div></div>`;
+    case "columns": {
+      const st = t >= s.strikeAt;
+      return `<div class="layer"><div class="cc"><div class="c1"><div class="nm">🎥</div><div class="t green" style="font-family:var(--f-display);font-size:2.8cqw">تهديد بتلفيق تهمة ← طلاق</div></div><div class="c2"><div class="nm">🎙</div><div style="font-size:2.8cqw" class="${st?"strike":""}">«شرير» · «مريض»</div></div></div></div>`;
+    }
+    case "harm": return `<div class="layer"><div style="display:grid;gap:2.4cqw;justify-items:center"><div class="harmcol on"><div class="nm">🎥</div><div class="t">تهديد بتلفيق تهمة ← طلاق</div><div style="font-size:2.6cqw">أذى حقيقي</div></div>${t>=s.factAt?`<div class="big s">حقيقة، مش حكاية</div>`:""}</div></div>`;
+    case "couch": return `<div class="layer" style="background:radial-gradient(ellipse at 50% 60%,#3a2c20,#12100d 70%)"><div class="row" style="align-items:flex-end"><div class="sil" style="transform:scale(1.4);filter:sepia(.6)"></div><div style="font-size:3cqw;opacity:.6">📱</div></div></div>`;
+    case "meeting": return `<div class="layer" style="background:#0b1014"><div style="display:grid;gap:2cqw;justify-items:center"><div class="sil" style="transform:scale(1.2)"></div><div class="row" style="gap:1.4cqw">${"<div class='sil' style='width:5cqw;height:7cqw'></div>".repeat(8)}</div></div></div>`;
+  }
+  return "";
+}
+
+function render(){
+  const slide = at(D.slides, t);
+  const seg = at(D.segs, t) || {};
+  const line = at(D.lines, t);
+  const sc = at(D.scenes, t) || D.scenes[D.scenes.length-1];
+  const showPresenter = !slide || slide.ovl;
+  let html = "";
+  if (showPresenter) html += `<div class="layer">${presenterLayer(seg.cam || "M")}</div>`;
+  if (slide) html += renderSlide(slide, t);
+  const src = (slide && slide.src) ? slide.src : (D.extraSrc.find(x => t >= x.a && t < x.a + 3) || {}).text;
+  if (src) html += `<div class="src">${esc(src)}</div>`;
+  if (line){
+    const cls = line.kind == "hold" ? "hold" : line.kind == "visual" ? "vis" : "";
+    const txt = line.kind == "hold" ? `⏳ صمت للمشاهد — المقدم ساكت وباصص للكاميرا` : line.kind == "visual" ? `🎬 مقطع بصري بلا كلام` : line.text;
+    html += `<div class="sub"><span class="${cls}">${esc(txt)}</span></div>`;
+  }
+  html += `<div class="badge"><span class="chip ${seg.pres=="ON"?"on":""}">${esc(seg.pres||"—")}</span><span class="chip">${slide?slide.id:"presenter"}</span></div>`;
+  $("stage").innerHTML = html;
+  $("tc").textContent = fmt(t) + " / " + fmt(D.total);
+  $("scTitle").textContent = sc.title;
+  $("scId").textContent = sc.id + "  (" + fmt(sc.a) + "–" + fmt(sc.b) + ")";
+  $("slId").textContent = slide ? slide.id + (slide.ovl ? " (فوق المقدم)" : "") : "المقدم وحده";
+  $("pres").textContent = seg.pres || "—";
+  $("cam").textContent = seg.cam || "—";
+  $("scrub").value = t;
+  document.querySelectorAll(".scenes button").forEach(b => b.classList.toggle("cur", b.dataset.id == sc.id));
+}
+
+function tick(now){
+  if (!playing) return;
+  if (last != null) t += (now - last) / 1000 * +$("speed").value;
+  last = now;
+  if (t >= D.total) { t = D.total - 0.01; setPlaying(false); }
+  render();
+  requestAnimationFrame(tick);
+}
+function setPlaying(p){
+  playing = p; last = null;
+  $("play").textContent = p ? "❚❚ إيقاف" : "▶ تشغيل";
+  if (p) requestAnimationFrame(tick);
+}
+
+function init(){
+  $("scrub").max = D.total;
+  const pal = ["#2c3a45","#3a4a56"];
+  $("bands").innerHTML = D.scenes.map((s,i)=>`<i title="${s.id}" style="width:${(s.b-s.a)/D.total*100}%;background:${s.id=="E1-08"?"#7d3440":pal[i%2]}"></i>`).join("");
+  $("scenes").innerHTML = D.scenes.map(s=>`<button type="button" data-id="${s.id}" data-a="${s.a}"><b>${s.id} · ${fmt(s.a)}</b><span>${esc(s.title)}</span></button>`).join("");
+  $("scenes").addEventListener("click", e => { const b = e.target.closest("button"); if (b){ t = +b.dataset.a + 0.01; render(); } });
+  $("play").addEventListener("click", () => setPlaying(!playing));
+  $("scrub").addEventListener("input", e => { t = +e.target.value; render(); });
+  document.addEventListener("keydown", e => { if (e.code == "Space" && e.target.tagName != "SELECT" && e.target.tagName != "BUTTON"){ e.preventDefault(); setPlaying(!playing); } });
+  render();
+}
+init();
+</script>
