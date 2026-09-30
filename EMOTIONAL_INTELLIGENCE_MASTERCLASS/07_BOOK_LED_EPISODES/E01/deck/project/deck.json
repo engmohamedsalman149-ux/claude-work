@@ -1,0 +1,72 @@
+{
+ "v": 4,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-09-30T14:50:01Z"
+ },
+ "lists": "css",
+ "title": "الحلقة 1 · المخ الانفعالي",
+ "order": [
+  "cover",
+  "meeting",
+  "karim-reply",
+  "who",
+  "map",
+  "aristotle",
+  "specs",
+  "books-disagree",
+  "ch1",
+  "motion",
+  "body",
+  "two-minds",
+  "five-part",
+  "ch2",
+  "hijack",
+  "small",
+  "alarm",
+  "two-roads",
+  "fast-wrong",
+  "old-alarm",
+  "jessica",
+  "two-forces",
+  "two-layers",
+  "replay",
+  "body-map",
+  "recap",
+  "next",
+  "end"
+ ],
+ "sections": {
+  "s1": {
+   "description": "المشكلة: رد كريم في الاجتماع وسؤال «مين اللي رد مكانه؟»",
+   "start": "cover"
+  },
+  "s2": {
+   "description": "المقدمة: أرسطو والغضب الصح، وخريطة السلسلة",
+   "start": "map"
+  },
+  "s3": {
+   "description": "الفصل 1: العاطفة نزوع لفعل، بصمة الجسم، والعقلين",
+   "start": "ch1"
+  },
+  "s4": {
+   "description": "الفصل 2: النوبة الانفعالية، الإنذار، الطريقين، والفرامل",
+   "start": "ch2"
+  },
+  "s5": {
+   "description": "الإجابة والتمرين والخطاف",
+   "start": "replay"
+  }
+ },
+ "faces": {
+  "reem-kufi": {
+   "family": "Reem Kufi",
+   "href": "https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&display=swap"
+  },
+  "ibm-plex-sans-arabic": {
+   "family": "IBM Plex Sans Arabic",
+   "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+  }
+ },
+ "designSystems": []
+}
