@@ -1,0 +1,80 @@
+{
+ "v": 4,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-10-01T12:00:00Z"
+ },
+ "lists": "css",
+ "title": "الحلقة 2 · أنا ومشاعري",
+ "order": [
+  "name-it",
+  "engineers",
+  "send",
+  "question",
+  "cover",
+  "map",
+  "five",
+  "ch4",
+  "samurai",
+  "observer",
+  "name-rate",
+  "styles",
+  "elliot",
+  "ch5",
+  "balance",
+  "duration",
+  "cascade",
+  "cyclist",
+  "vent",
+  "cool",
+  "ch6",
+  "exam",
+  "inverted-u",
+  "marshmallow",
+  "metlife",
+  "explain",
+  "flow",
+  "karim-draft",
+  "exercise",
+  "recap",
+  "next",
+  "end"
+ ],
+ "sections": {
+  "s1": {
+   "description": "الهوك: سمّي إحساسك في 3 ثواني، والمهندسين، وكريم الساعة 2 والماوس على Send",
+   "start": "name-it"
+  },
+  "s2": {
+   "description": "الفصل 3: خمس قدرات للذكاء العاطفي (سالوفي)",
+   "start": "map"
+  },
+  "s3": {
+   "description": "الفصل 4 اعرف نفسك: الساموراي، الذات المراقبة، التسمية، أساليب ماير، إليوت",
+   "start": "ch4"
+  },
+  "s4": {
+   "description": "الفصل 5 عبيد العاطفة: توازن لا قمع، المدة، الغضب يبني على غضب، خرافة التنفيس، الأدوات",
+   "start": "ch5"
+  },
+  "s5": {
+   "description": "الفصل 6 القدرة المسيطرة: التجمد، منحنى U، الحلوى، التفاؤل، التدفق",
+   "start": "ch6"
+  },
+  "s6": {
+   "description": "الإجابة: كريم يحفظ مسودة، التمرين، والخطاف للحلقة 3",
+   "start": "karim-draft"
+  }
+ },
+ "faces": {
+  "lalezar": {
+   "family": "Lalezar",
+   "href": "https://fonts.googleapis.com/css2?family=Lalezar&display=swap"
+  },
+  "ibm-plex-sans-arabic": {
+   "family": "IBM Plex Sans Arabic",
+   "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+  }
+ },
+ "designSystems": []
+}
