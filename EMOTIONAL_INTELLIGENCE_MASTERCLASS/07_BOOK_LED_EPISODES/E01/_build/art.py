@@ -143,3 +143,72 @@ def frame():
     b += f'<path d="M 40 300 L 160 180 L 250 260 L 330 200 L 480 320 L 480 350 L 40 350 Z" fill="#2F5A55" stroke="{TEAL}" stroke-width="4"/>'
     b += f'<path d="M 470 30 L 380 380" stroke="{RED}" stroke-width="10" opacity="0.9"/>'
     return svg(520, 390, b, "لوحة في برواز، وعليها خط أحمر: اترمت")
+
+
+def snow_car():
+    """Goleman in the Colorado snow (p.20): car stopped, snow, crash ahead hidden."""
+    b = f'<path d="M 0 330 L 700 330" stroke="{DIM}" stroke-width="6"/>'
+    b += f'<path d="M 40 300 L 200 300 L 230 250 L 330 250 L 370 300 L 420 300 L 420 330 L 40 330 Z" stroke="{PALE}" stroke-width="7" fill="#16223A"/>'
+    b += f'<circle cx="120" cy="335" r="26" stroke="{PALE}" stroke-width="7" fill="#101826"/><circle cx="350" cy="335" r="26" stroke="{PALE}" stroke-width="7" fill="#101826"/>'
+    b += f'<path d="M 430 290 L 470 290" stroke="{AMB}" stroke-width="8"/>'  # headlights
+    import random
+    random.seed(4)
+    for _ in range(46):
+        x, y = random.randint(10, 690), random.randint(10, 240)
+        b += f'<circle cx="{x}" cy="{y}" r="{random.choice((3, 4, 5))}" fill="{PALE}" opacity="0.8"/>'
+    b += f'<path d="M 560 330 L 600 270 L 640 330" stroke="{RED}" stroke-width="7"/><circle cx="600" cy="300" r="5" fill="{RED}"/>'  # warning triangle ahead
+    return svg(700, 370, b, "عربية واقفة في التلج، وقدامها علامة حادثة")
+
+
+def building():
+    """Brain as a 3-floor building (p.25–28): stem (ground), limbic (1st), neocortex (top)."""
+    b = f'<path d="M 40 560 L 560 560" stroke="{PALE}" stroke-width="8"/>'
+    b += f'<rect x="80" y="400" width="440" height="160" stroke="{DIM}" stroke-width="7" fill="#16223A"/>'
+    b += f'<rect x="80" y="240" width="440" height="160" stroke="{AMB}" stroke-width="7" fill="#3A2A10"/>'
+    b += f'<rect x="80" y="80" width="440" height="160" stroke="{TEAL}" stroke-width="7" fill="#123330"/>'
+    b += f'<path d="M 60 80 L 300 10 L 540 80" stroke="{TEAL}" stroke-width="7" fill="none"/>'
+    for y in (110, 270, 430):
+        b += "".join(f'<rect x="{x}" y="{y}" width="60" height="50" rx="4" stroke="{PALE}" stroke-width="4" opacity="0.5"/>' for x in (120, 270, 420))
+    return svg(600, 580, b, "مبنى من 3 أدوار: جذع المخ تحت، الجهاز الحوفي في النص، القشرة الجديدة فوق")
+
+
+def relay():
+    """Engineering analogy: protection relay trips fast; the control room reads later."""
+    b = f'<rect x="30" y="120" width="220" height="260" rx="16" stroke="{AMB}" stroke-width="8" fill="#3A2A10"/>'
+    b += f'<path d="M 150 170 L 110 260 L 150 260 L 120 340" stroke="{AMB}" stroke-width="10" fill="none"/>'
+    b += f'<rect x="420" y="80" width="300" height="200" rx="14" stroke="{TEAL}" stroke-width="8" fill="#123330"/>'
+    b += "".join(f'<line x1="450" y1="{120 + i * 34}" x2="{690 - i * 50}" y2="{120 + i * 34}" stroke="{TEAL}" stroke-width="6" opacity="0.7"/>' for i in range(4))
+    b += f'<path d="M 520 280 L 500 340 L 640 340 L 620 280" stroke="{TEAL}" stroke-width="7"/>'
+    b += f'<path d="M 260 250 L 400 190" stroke="{DIM}" stroke-width="5" stroke-dasharray="14 12"/>'
+    return svg(750, 400, b, "ريليه حماية بيفصل بسرعة، وغرفة تحكم بتقرا بعده")
+
+
+def alarm_flood():
+    """Control-room screen flooded with alarms (working memory freeze, p.48–49)."""
+    b = f'<rect x="20" y="20" width="560" height="360" rx="18" stroke="{PALE}" stroke-width="8" fill="#0C1320"/>'
+    import random
+    random.seed(7)
+    for r in range(7):
+        for c in range(5):
+            col = random.choice((RED, RED, AMB, DIM))
+            b += f'<rect x="{50 + c * 104}" y="{50 + r * 46}" width="88" height="30" rx="6" fill="{col}" opacity="{0.55 + random.random() * 0.45:.2f}"/>'
+    b += f'<path d="M 230 400 L 210 450 L 390 450 L 370 400" stroke="{PALE}" stroke-width="7"/>'
+    return svg(600, 470, b, "شاشة غرفة تحكم مليانة إنذارات")
+
+
+def legacy():
+    """Stone-age hardware running today's software (p.19): campfire + laptop."""
+    b = f'<path d="M 120 300 C 60 290 60 220 100 180 C 100 220 120 225 128 210 C 115 160 140 110 175 90 C 168 140 210 165 210 225 C 210 280 170 300 120 300 Z" stroke="{AMB}" stroke-width="8" fill="#3A2A10"/>'
+    b += f'<path d="M 60 320 L 230 290 M 60 290 L 230 320" stroke="{PALE}" stroke-width="10"/>'
+    b += f'<path d="M 280 200 L 360 200" stroke="{DIM}" stroke-width="8"/><path d="M 340 180 L 365 200 L 340 220" stroke="{DIM}" stroke-width="8"/>'
+    b += f'<rect x="420" y="90" width="300" height="190" rx="14" stroke="{PALE}" stroke-width="8" fill="#0C1320"/>'
+    b += f'<path d="M 390 290 L 750 290 L 730 320 L 410 320 Z" stroke="{PALE}" stroke-width="8" fill="#16223A"/>'
+    b += "".join(f'<rect x="{445 + i * 62}" y="120" width="48" height="36" rx="6" fill="{RED}" opacity="0.8"/>' for i in range(4))
+    return svg(780, 340, b, "نار عصر الصيد ← لابتوب الشغل: نفس الجهاز، مشاكل جديدة")
+
+
+def jolt():
+    b = "".join(f'<line x1="300" y1="300" x2="{300 + 260 * __import__("math").cos(a):.0f}" y2="{300 + 260 * __import__("math").sin(a):.0f}" stroke="{PALE}" stroke-width="{10 if i % 2 else 5}" opacity="0.9"/>'
+                for i, a in enumerate([k * 0.3927 for k in range(16)]))
+    b += f'<circle cx="300" cy="300" r="90" fill="{PALE}"/>'
+    return svg(600, 600, b, "وميض مفاجئ")
