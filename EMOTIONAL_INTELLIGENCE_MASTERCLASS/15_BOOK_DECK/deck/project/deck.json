@@ -1,0 +1,196 @@
+{
+ "v": 4,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-10-02T12:00:00Z"
+ },
+ "lists": "css",
+ "title": "الذكاء العاطفي للمهندسين",
+ "faces": {
+  "lalezar": {
+   "family": "Lalezar",
+   "href": "https://fonts.googleapis.com/css2?family=Lalezar&display=swap"
+  },
+  "ibm-plex-sans-arabic": {
+   "family": "IBM Plex Sans Arabic",
+   "href": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+  }
+ },
+ "designSystems": [],
+ "order": [
+  "cover",
+  "thesis",
+  "engineers",
+  "sources",
+  "map",
+  "limits",
+  "part1",
+  "motion",
+  "colorado",
+  "elliot",
+  "inverse",
+  "layers",
+  "legacy",
+  "salovey",
+  "hijack",
+  "amygdala",
+  "two-roads",
+  "relay",
+  "old-alarms",
+  "brakes",
+  "two-forces",
+  "working-memory",
+  "ex2",
+  "five-part",
+  "alex",
+  "trigger",
+  "path",
+  "hot-thought",
+  "facts",
+  "stories",
+  "assumptions",
+  "ex3",
+  "part2",
+  "samurai",
+  "observer",
+  "mayer",
+  "naming",
+  "rate",
+  "body",
+  "calm-face",
+  "mindful",
+  "low-load",
+  "ex4",
+  "balance",
+  "duration",
+  "cascade",
+  "cyclists",
+  "vent",
+  "toolbox",
+  "timeout",
+  "thought-record",
+  "record-rules",
+  "which-tool",
+  "ex5",
+  "inverted-u",
+  "marshmallow",
+  "optimism",
+  "metlife",
+  "hope",
+  "flow",
+  "ex6",
+  "part3",
+  "empathy",
+  "how",
+  "calm-first",
+  "blocks",
+  "listen-tools",
+  "needs",
+  "curious",
+  "four-options",
+  "ex7",
+  "crucial",
+  "pool",
+  "silence-violence",
+  "heart",
+  "sucker",
+  "safety",
+  "state",
+  "nvc4",
+  "requests",
+  "decide",
+  "ex8",
+  "pilot",
+  "bad-criticism",
+  "levinson",
+  "feedback-template",
+  "receive",
+  "team-iq",
+  "climate",
+  "ex9",
+  "anger-need",
+  "gottman",
+  "flooding",
+  "resolve",
+  "calibrate",
+  "line",
+  "ex10",
+  "part4",
+  "principles",
+  "plan1",
+  "plan2",
+  "review",
+  "relapse",
+  "hijack-card",
+  "feelings",
+  "needs-list",
+  "templates",
+  "end"
+ ],
+ "sections": {
+  "s1": {
+   "description": "المقدمة: فكرة الكتاب، والمصادر الخمسة، وطريقة الاستخدام",
+   "start": "cover"
+  },
+  "s2": {
+   "description": "الجزء الأول، الآلة: ما المشاعر، والاختطاف العاطفي، والأفكار والمشاعر",
+   "start": "part1"
+  },
+  "s3": {
+   "description": "الفصل 1: المشاعر أوامر حركة وبيانات للقرار، والقاعدة العكسية، ومجالات سالوفي الخمسة",
+   "start": "motion"
+  },
+  "s4": {
+   "description": "الفصل 2: الاختطاف العاطفي، اللوزة والمساران، الإنذارات القديمة، الفرامل، والذاكرة العاملة",
+   "start": "hijack"
+  },
+  "s5": {
+   "description": "الفصل 3: الأفكار والمشاعر، مسار الفعل، الفكرة الساخنة، الحقيقة مقابل التفسير، والقصص الذكية",
+   "start": "five-part"
+  },
+  "s6": {
+   "description": "الجزء الثاني، المهارات الذاتية: الوعي الذاتي، وإدارة الانفعال، والتحفيز الذاتي",
+   "start": "part2"
+  },
+  "s7": {
+   "description": "الفصل 4: الوعي الذاتي، المراقبة والتسمية والقياس وقراءة الجسد واليقظة الذهنية",
+   "start": "samurai"
+  },
+  "s8": {
+   "description": "الفصل 5: إدارة الانفعال، المدة، تراكم الغضب، خرافة التنفيس، صندوق الأدوات، وسجل الأفكار",
+   "start": "balance"
+  },
+  "s9": {
+   "description": "الفصل 6: التحفيز الذاتي، منحنى U، المثابرة، تأجيل الإشباع، التفاؤل، الأمل، والتدفق",
+   "start": "inverted-u"
+  },
+  "s10": {
+   "description": "الجزء الثالث، المهارات مع الآخرين: التعاطف، والحوار الصعب، والنقد والفريق، والغضب والصراع",
+   "start": "part3"
+  },
+  "s11": {
+   "description": "الفصل 7: التعاطف والإصغاء، الكيف لا الكلام، معوقات التعاطف، أدوات الإصغاء، والاحتياج خلف الحكم",
+   "start": "empathy"
+  },
+  "s12": {
+   "description": "الفصل 8: الحوار الصعب، حوض المعنى، الأمان، STATE، المكونات الأربعة، التوكيد، والقرار",
+   "start": "crucial"
+  },
+  "s13": {
+   "description": "الفصل 9: النقد والتغذية الراجعة والعمل في فريق، قواعد ليفنسون، الواقعة والنمط، وذكاء الفريق",
+   "start": "pilot"
+  },
+  "s14": {
+   "description": "الفصل 10: الغضب والصراع، علامات جوتمان، الطوفان، حل النزاع بالاحتياجات، المعايرة، وتجاوز الحد",
+   "start": "anger-need"
+  },
+  "s15": {
+   "description": "الجزء الرابع، التطبيق: خطة الأسابيع الثمانية، والمراجعة، وخطة الانتكاس، والملاحق",
+   "start": "part4"
+  },
+  "s16": {
+   "description": "الفصل 11 والملاحق: المبادئ، الخطة أسبوعًا بأسبوع، المراجعة، الانتكاس، والأدوات",
+   "start": "principles"
+  }
+ }
+}
