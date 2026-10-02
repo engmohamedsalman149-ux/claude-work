@@ -19,19 +19,24 @@
  "designSystems": [],
  "order": [
   "cover",
+  "problem",
   "thesis",
   "engineers",
+  "goal",
   "sources",
   "map",
-  "limits",
+  "howto",
   "part1",
+  "open1",
   "motion",
-  "colorado",
   "elliot",
   "inverse",
   "layers",
   "legacy",
   "salovey",
+  "case1",
+  "close1",
+  "open2",
   "hijack",
   "amygdala",
   "two-roads",
@@ -40,27 +45,31 @@
   "brakes",
   "two-forces",
   "working-memory",
-  "ex2",
+  "case2",
+  "close2",
+  "open3",
   "five-part",
   "alex",
   "trigger",
   "path",
   "hot-thought",
-  "facts",
   "stories",
+  "facts",
   "assumptions",
-  "ex3",
+  "case3",
+  "close3",
   "part2",
+  "open4",
   "samurai",
   "observer",
   "mayer",
   "naming",
   "rate",
   "body",
-  "calm-face",
   "mindful",
-  "low-load",
-  "ex4",
+  "case4",
+  "close4",
+  "open5",
   "balance",
   "duration",
   "cascade",
@@ -71,24 +80,27 @@
   "thought-record",
   "record-rules",
   "which-tool",
-  "ex5",
+  "case5",
+  "close5",
+  "open6",
   "inverted-u",
   "marshmallow",
   "optimism",
   "metlife",
-  "hope",
   "flow",
-  "ex6",
+  "case6",
+  "close6",
   "part3",
+  "open7",
   "empathy",
   "how",
-  "calm-first",
   "blocks",
   "listen-tools",
   "needs",
   "curious",
-  "four-options",
-  "ex7",
+  "case7",
+  "close7",
+  "open8",
   "crucial",
   "pool",
   "silence-violence",
@@ -99,7 +111,9 @@
   "nvc4",
   "requests",
   "decide",
-  "ex8",
+  "case8",
+  "close8",
+  "open9",
   "pilot",
   "bad-criticism",
   "levinson",
@@ -107,20 +121,25 @@
   "receive",
   "team-iq",
   "climate",
-  "ex9",
+  "case9",
+  "close9",
+  "open10",
   "anger-need",
   "gottman",
   "flooding",
   "resolve",
   "calibrate",
   "line",
-  "ex10",
+  "case10",
+  "close10",
   "part4",
+  "open11",
   "principles",
   "plan1",
   "plan2",
   "review",
   "relapse",
+  "whole",
   "hijack-card",
   "feelings",
   "needs-list",
@@ -137,60 +156,60 @@
    "start": "part1"
   },
   "s3": {
-   "description": "الفصل 1: المشاعر أوامر حركة وبيانات للقرار، والقاعدة العكسية، ومجالات سالوفي الخمسة",
-   "start": "motion"
+   "description": "الفصل 1: ما المشاعر، ولماذا تسبق التفكير، وما المهارات المطلوبة",
+   "start": "open1"
   },
   "s4": {
-   "description": "الفصل 2: الاختطاف العاطفي، اللوزة والمساران، الإنذارات القديمة، الفرامل، والذاكرة العاملة",
-   "start": "hijack"
+   "description": "الفصل 2: الاختطاف العاطفي، اللوزة والمساران، الإنذارات القديمة، والفرامل",
+   "start": "open2"
   },
   "s5": {
-   "description": "الفصل 3: الأفكار والمشاعر، مسار الفعل، الفكرة الساخنة، الحقيقة مقابل التفسير، والقصص الذكية",
-   "start": "five-part"
+   "description": "الفصل 3: الأفكار والمشاعر، مسار الفعل، الفكرة الساخنة، الحقيقة مقابل التفسير",
+   "start": "open3"
   },
   "s6": {
    "description": "الجزء الثاني، المهارات الذاتية: الوعي الذاتي، وإدارة الانفعال، والتحفيز الذاتي",
    "start": "part2"
   },
   "s7": {
-   "description": "الفصل 4: الوعي الذاتي، المراقبة والتسمية والقياس وقراءة الجسد واليقظة الذهنية",
-   "start": "samurai"
+   "description": "الفصل 4: الوعي الذاتي، المراقبة والتسمية والقياس وقراءة الجسد",
+   "start": "open4"
   },
   "s8": {
-   "description": "الفصل 5: إدارة الانفعال، المدة، تراكم الغضب، خرافة التنفيس، صندوق الأدوات، وسجل الأفكار",
-   "start": "balance"
+   "description": "الفصل 5: إدارة الانفعال، المدة، تراكم الغضب، خرافة التنفيس، الأدوات، وسجل الأفكار",
+   "start": "open5"
   },
   "s9": {
-   "description": "الفصل 6: التحفيز الذاتي، منحنى U، المثابرة، تأجيل الإشباع، التفاؤل، الأمل، والتدفق",
-   "start": "inverted-u"
+   "description": "الفصل 6: التحفيز الذاتي، منحنى U، تأجيل الإشباع، التفاؤل، والتدفق",
+   "start": "open6"
   },
   "s10": {
    "description": "الجزء الثالث، المهارات مع الآخرين: التعاطف، والحوار الصعب، والنقد والفريق، والغضب والصراع",
    "start": "part3"
   },
   "s11": {
-   "description": "الفصل 7: التعاطف والإصغاء، الكيف لا الكلام، معوقات التعاطف، أدوات الإصغاء، والاحتياج خلف الحكم",
-   "start": "empathy"
+   "description": "الفصل 7: التعاطف والإصغاء، معوقات التعاطف، أدوات الإصغاء، والاحتياج خلف الحكم",
+   "start": "open7"
   },
   "s12": {
-   "description": "الفصل 8: الحوار الصعب، حوض المعنى، الأمان، STATE، المكونات الأربعة، التوكيد، والقرار",
-   "start": "crucial"
+   "description": "الفصل 8: الحوار الصعب، حوض المعنى، الأمان، STATE، المكونات الأربعة، والقرار",
+   "start": "open8"
   },
   "s13": {
-   "description": "الفصل 9: النقد والتغذية الراجعة والعمل في فريق، قواعد ليفنسون، الواقعة والنمط، وذكاء الفريق",
-   "start": "pilot"
+   "description": "الفصل 9: النقد والتغذية الراجعة، قواعد ليفنسون، الواقعة والنمط، وذكاء الفريق",
+   "start": "open9"
   },
   "s14": {
-   "description": "الفصل 10: الغضب والصراع، علامات جوتمان، الطوفان، حل النزاع بالاحتياجات، المعايرة، وتجاوز الحد",
-   "start": "anger-need"
+   "description": "الفصل 10: الغضب والصراع، علامات جوتمان، الطوفان، حل النزاع، والحدود",
+   "start": "open10"
   },
   "s15": {
    "description": "الجزء الرابع، التطبيق: خطة الأسابيع الثمانية، والمراجعة، وخطة الانتكاس، والملاحق",
    "start": "part4"
   },
   "s16": {
-   "description": "الفصل 11 والملاحق: المبادئ، الخطة أسبوعًا بأسبوع، المراجعة، الانتكاس، والأدوات",
-   "start": "principles"
+   "description": "الفصل 11: خطة تدريب ثمانية أسابيع، والمراجعة، والانتكاس، والصورة كاملة",
+   "start": "open11"
   }
  }
 }
