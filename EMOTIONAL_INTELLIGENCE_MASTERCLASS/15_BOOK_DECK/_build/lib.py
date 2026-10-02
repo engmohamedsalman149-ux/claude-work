@@ -33,6 +33,11 @@ W = R - L
 
 slides, order, sections = {}, [], {}
 
+# plain-language speaker notes (Egyptian colloquial) replace the sourced notes written with each slide
+EASY = {}
+for _m in ("notes1", "notes2", "notes3", "notes4"):
+    EASY.update(_load(_m, HERE / f"{_m}.py").N)
+
 
 def nlines(t, size, w, disp=False):
     k = 0.47 if disp else 0.5
@@ -161,6 +166,7 @@ def slide(sid, body, notes, bg=INK, page=None, transition="fade", crumbs=True, s
         body = re.sub(r'width:(\d+)px;font-size:30px;[^>]*>\u202b(' + re.escape(NAV["step"]) + r'[^\u202c]*)\u202c', fit, body, count=1)
     if crumbs:
         body += progress(bg != AMB)
+    notes = EASY.get(sid, notes)
     notes = re.sub(r"\n\s+", "\n", notes.strip())
     assert len(notes) <= 4000, sid
     assert sid not in slides, sid
